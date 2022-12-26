@@ -80,9 +80,9 @@ public class SearchVideogameActivity extends AppCompatActivity {
         });
 
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_search_videogame);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_search_videogame);
+        //appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     }
 
     private void showReposDataView(){
