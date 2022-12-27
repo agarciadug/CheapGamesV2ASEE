@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -47,7 +48,9 @@ public class SearchVideogameActivity extends AppCompatActivity {
 
         binding = ActivitySearchVideogameBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setSupportActionBar(binding.toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         mRecyclerView = findViewById(R.id.lista_busqueda);
         mRecyclerView.setHasFixedSize(true);
@@ -57,7 +60,7 @@ public class SearchVideogameActivity extends AppCompatActivity {
 
         SearchVideogameViewModelFactory factory = InjectorUtils.provideMainActivityViewModelFactory(this.getApplicationContext());
         AppContainer appContainer = ((MyApplication) getApplication()).appContainer;
-        SearchVideogameActivityViewModel mViewModel = new ViewModelProvider(this, appContainer.factory).get(SearchVideogameActivityViewModel.class);
+        SearchVideogameActivityViewModel mViewModel = new ViewModelProvider(this, (ViewModelProvider.Factory)appContainer.factory).get(SearchVideogameActivityViewModel.class);
         mViewModel.getVideogames().observe(this, videogames -> {
             mAdapter.swap(videogames);
             // Show the repo list or the loading screen based on whether the repos data exists and is loaded
@@ -80,9 +83,9 @@ public class SearchVideogameActivity extends AppCompatActivity {
         });
 
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_search_videogame);
+        /*NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_search_videogame);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);*/
     }
 
     private void showReposDataView(){
