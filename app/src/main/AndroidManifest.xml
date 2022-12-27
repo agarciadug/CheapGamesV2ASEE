@@ -17,14 +17,17 @@
         <activity
             android:name=".ui.search.SearchVideogameActivity"
             android:exported="false"
-            android:label="@string/title_activity_search_videogame"
-            android:theme="@style/Theme.CheapGamesV2.NoActionBar">
+            android:label="Búsqueda"
+            android:parentActivityName=".MenuInicialActivity"
+
+            >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
+                android:resource="@xml/searchable"
+                />
         </activity>
         <activity
             android:name=".MenuInicialActivity"
@@ -33,10 +36,8 @@
             android:theme="@style/Theme.CheapGamesV2.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
