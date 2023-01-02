@@ -25,4 +25,6 @@
     <string name="preciovj">precioVJ</string>
     <string name="app_label">CheapGamesV2</string>
     <string name="search_hint">Busca un juego</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

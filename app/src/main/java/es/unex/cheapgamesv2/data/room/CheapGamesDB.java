@@ -12,7 +12,7 @@ import es.unex.cheapgamesv2.data.model.Usuario;
 import es.unex.cheapgamesv2.data.model.Videogame;
 import es.unex.cheapgamesv2.data.model.VideogameDeal;
 
-@Database(entities = {Usuario.class, Tienda.class, ListaSeguimiento.class, Videogame.class, VideogameDeal.class}, version = 4)
+@Database(entities = {Usuario.class, Tienda.class, ListaSeguimiento.class, Videogame.class, VideogameDeal.class}, version = 5)
 public abstract class CheapGamesDB extends RoomDatabase {
 
     private static CheapGamesDB INSTANCE;
@@ -26,8 +26,9 @@ public abstract class CheapGamesDB extends RoomDatabase {
         return INSTANCE;
     }
 
-    /*public abstract UsuarioDao usuarioDao();
+    /*
      public abstract ListaSeguimientoDao listaSeguimientoDao();*/
+    public abstract UsuarioDao usuarioDao();
     public abstract TiendaDao tiendaDao();
     public abstract VideogameDao videogameDao();
     public abstract VideogameDealDao videogameDealDao();

@@ -49,8 +49,7 @@ public class Videogame implements Parcelable
             return (new Videogame[size]);
         }
 
-    }
-            ;
+    };
 
     public Videogame(android.os.Parcel in) {
         this.gameID = ((String) in.readValue((String.class.getClassLoader())));

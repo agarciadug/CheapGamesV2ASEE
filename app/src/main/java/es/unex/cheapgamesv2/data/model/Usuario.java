@@ -1,7 +1,10 @@
 package es.unex.cheapgamesv2.data.model;
 
 import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -9,7 +12,7 @@ import androidx.room.PrimaryKey;
 
 
 @Entity(tableName = "usuario")
-public class Usuario {
+public class Usuario implements Parcelable {
 	@Ignore
 	public static final String ITEM_SEP = System.getProperty("line.separator");
 
@@ -49,8 +52,7 @@ public class Usuario {
     }
 
 	// Create a new Usuario2 from data packaged in an Intent
-	@Ignore
-	Usuario(Intent intent) {
+	public Usuario(Intent intent) {
 		mID = intent.getLongExtra(Usuario.ID,0); //TODO think best default value for ID
 		mNomUsuario = intent.getStringExtra(Usuario.NOMUSUARIO);
 		mEmail = intent.getStringExtra(Usuario.EMAIL);
@@ -58,7 +60,26 @@ public class Usuario {
 
 	}
 
-    public long getID() { return mID; }
+	protected Usuario(Parcel in) {
+		mID = in.readLong();
+		mNomUsuario = in.readString();
+		mEmail = in.readString();
+		mPassword = in.readString();
+	}
+
+	public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
+		@Override
+		public Usuario createFromParcel(Parcel in) {
+			return new Usuario(in);
+		}
+
+		@Override
+		public Usuario[] newArray(int size) {
+			return new Usuario[size];
+		}
+	};
+
+	public long getID() { return mID; }
 
     public void setID(long ID) { this.mID = ID; }
 
@@ -108,4 +129,16 @@ public class Usuario {
 				+ ITEM_SEP + "Password:" + mPassword;
 	}
 
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(@NonNull Parcel dest, int flags) {
+		dest.writeValue(mID);
+		dest.writeValue(mNomUsuario);
+		dest.writeValue(mEmail);
+		dest.writeValue(mPassword);
+	}
 }
