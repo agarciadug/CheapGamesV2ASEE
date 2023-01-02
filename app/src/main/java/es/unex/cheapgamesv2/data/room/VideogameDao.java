@@ -29,7 +29,7 @@ public interface VideogameDao {
             "            external LIKE :title)")
     int getNumberVideogamesByTitle(String title);
 
-    @Query("SELECT * FROM videogame WHERE (external LIKE '%' || :title || '%' OR\n" +
+    @Query("DELETE FROM videogame WHERE (external LIKE '%' || :title || '%' OR\n" +
             "            external LIKE :title || '%' OR\n" +
             "            external LIKE '%' || :title OR\n" +
             "            external LIKE :title)")

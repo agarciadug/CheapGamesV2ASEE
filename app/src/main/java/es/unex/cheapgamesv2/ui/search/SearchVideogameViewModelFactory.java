@@ -14,7 +14,7 @@ public class SearchVideogameViewModelFactory extends ViewModelProvider.NewInstan
 
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
-        //noinspection unchecked
+
         return (T) new SearchVideogameActivityViewModel(mRepository);
     }
 }

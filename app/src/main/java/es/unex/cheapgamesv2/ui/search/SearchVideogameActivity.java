@@ -1,21 +1,13 @@
 package es.unex.cheapgamesv2.ui.search;
 
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.SearchView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,11 +17,9 @@ import java.util.List;
 import es.unex.cheapgamesv2.AppContainer;
 import es.unex.cheapgamesv2.InjectorUtils;
 import es.unex.cheapgamesv2.MyApplication;
+import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.Videogame;
 import es.unex.cheapgamesv2.databinding.ActivitySearchVideogameBinding;
-//import es.unex.cheapgamesv2.ui.search.databinding.ActivitySearchVideogameBinding;
-
-import es.unex.cheapgamesv2.R;
 
 public class SearchVideogameActivity extends AppCompatActivity {
 
@@ -37,10 +27,8 @@ public class SearchVideogameActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private SearchView mSearchView;
 
-    private AppBarConfiguration appBarConfiguration;
     private ActivitySearchVideogameBinding binding;
-    RecyclerView listvjBusqueda;
-    List<Videogame> lVjBusqueda;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

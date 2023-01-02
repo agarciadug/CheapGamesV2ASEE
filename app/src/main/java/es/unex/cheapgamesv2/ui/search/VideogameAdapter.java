@@ -1,6 +1,7 @@
 package es.unex.cheapgamesv2.ui.search;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.Videogame;
+import es.unex.cheapgamesv2.ui.detail.DetailVideogameActivity;
 
 public class VideogameAdapter extends RecyclerView.Adapter<VideogameAdapter.MyViewHolder> {
     private final Context mContex;
@@ -41,14 +43,14 @@ public class VideogameAdapter extends RecyclerView.Adapter<VideogameAdapter.MyVi
         holder.mItem = mVideojuegosLista.get(position);
         holder.mNombreView.setText(mVideojuegosLista.get(position).getExternal());
         holder.mPrecioView.setText(mVideojuegosLista.get(position).getCheapest());
-        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), VideogameDetailsActivity.class)
+                Intent intent = new Intent(holder.itemView.getContext(), DetailVideogameActivity.class)
                         .putExtra("videojuego", holder.mItem);
                 holder.itemView.getContext().startActivity(intent);
             }
-        });*/
+        });
     }
 
 

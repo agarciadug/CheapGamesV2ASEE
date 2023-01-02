@@ -15,6 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import es.unex.cheapgamesv2.data.LoadStores;
 import es.unex.cheapgamesv2.databinding.ActivityMainBinding;
 import es.unex.cheapgamesv2.ui.search.SearchVideogameActivity;
 
@@ -43,6 +44,9 @@ public class MenuInicialActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        LoadStores loadStores = new LoadStores(this);
+        loadStores.Stores();
     }
 
     @Override
