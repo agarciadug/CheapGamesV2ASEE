@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import es.unex.cheapgamesv2.data.LoadStores;
 import es.unex.cheapgamesv2.data.model.Usuario;
+import es.unex.cheapgamesv2.data.model.UsuarioGlobal;
 import es.unex.cheapgamesv2.databinding.ActivityMainBinding;
 import es.unex.cheapgamesv2.ui.ajustes.AjustesFragment;
 import es.unex.cheapgamesv2.ui.login.PantallaInicial;
@@ -32,6 +33,7 @@ public class MenuInicialActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private Usuario uAux;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,6 @@ public class MenuInicialActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        Usuario uAux = GetDataFromIntent();
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
@@ -61,11 +62,11 @@ public class MenuInicialActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         Button b_sesion = headerView.findViewById(R.id.b_sesion);
 
-        if(uAux!=null){
+        if(!UsuarioGlobal.getNomUsuario().equals("Invitado")){
             TextView navUsername = (TextView) headerView.findViewById(R.id.nav_NomUsuario);
-            navUsername.setText(uAux.getNomUsuario());
+            navUsername.setText(UsuarioGlobal.getNomUsuario());
             TextView email = headerView.findViewById(R.id.textView);
-            email.setText(uAux.getEmail());
+            email.setText(UsuarioGlobal.getEmail());
             Log.v("Nom usuario", "hola");
         }
         else{
@@ -117,14 +118,5 @@ public class MenuInicialActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-
-    public Usuario GetDataFromIntent() {
-
-        Usuario usuario = new Usuario(getIntent());
-        if(usuario.getNomUsuario()==null){
-            return null;
-        }
-        return usuario;
     }
 }

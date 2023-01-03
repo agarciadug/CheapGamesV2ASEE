@@ -20,16 +20,17 @@ import es.unex.cheapgamesv2.AppExecutors;
 import es.unex.cheapgamesv2.MenuInicialActivity;
 import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.Usuario;
+import es.unex.cheapgamesv2.data.model.UsuarioGlobal;
 import es.unex.cheapgamesv2.data.room.CheapGamesDB;
 import es.unex.cheapgamesv2.data.room.UsuarioDao;
 import es.unex.cheapgamesv2.databinding.FragmentAjustesBinding;
 import es.unex.cheapgamesv2.ui.home.HomeViewModel;
+import es.unex.cheapgamesv2.ui.login.PantallaInicial;
 
 public class AjustesFragment extends Fragment {
 
     private FragmentAjustesBinding binding;
     Button editarUsuario, borrarUsuario, cerrarSesion;
-    private Usuario mUsuario;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -44,13 +45,12 @@ public class AjustesFragment extends Fragment {
         final EditText cambiarPassword = binding.cambiarPassword;
 
         MenuInicialActivity activity = (MenuInicialActivity) getActivity();
-        mUsuario = activity.GetDataFromIntent();
 
-        Log.v("fragment ajustes", mUsuario.getNomUsuario());
+        Log.v("fragment ajustes", UsuarioGlobal.getNomUsuario());
 
-        cambiarNomUsuario.setText(mUsuario.getNomUsuario());
-        cambiarEmail.setText(mUsuario.getEmail());
-        cambiarPassword.setText(mUsuario.getPassword());
+        cambiarNomUsuario.setText(UsuarioGlobal.getNomUsuario());
+        cambiarEmail.setText(UsuarioGlobal.getEmail());
+        cambiarPassword.setText(UsuarioGlobal.getPassword());
 
         editarUsuario=binding.bAplicarCambios;
         editarUsuario.setOnClickListener(new View.OnClickListener() {
@@ -62,13 +62,12 @@ public class AjustesFragment extends Fragment {
                 if(nomUsuarioText.isEmpty() || emailText.isEmpty() || passwordText.isEmpty()){
                     Toast.makeText(getActivity().getApplicationContext(), "Rellena todos los campos", Toast.LENGTH_SHORT).show();
                 }else{
-                    Usuario usuario = new Usuario(mUsuario.getID(), nomUsuarioText, emailText, passwordText);
+                    Usuario usuario = new Usuario(UsuarioGlobal.getID(), nomUsuarioText, emailText, passwordText);
                     AppExecutors.getInstance().diskIO().execute(()-> CheapGamesDB.getInstance(getActivity().getApplicationContext()).usuarioDao().update(usuario));
-                    mUsuario.setNomUsuario(nomUsuarioText);
-                    mUsuario.setEmail(emailText);
-                    mUsuario.setPassword(passwordText);
+                    UsuarioGlobal.setNomUsuario(nomUsuarioText);
+                    UsuarioGlobal.setEmail(emailText);
+                    UsuarioGlobal.setPassword(passwordText);
                     Intent intent = new Intent(getActivity(), MenuInicialActivity.class);
-                    usuario.packageIntent(intent, mUsuario.getNomUsuario(), mUsuario.getEmail(), mUsuario.getPassword());
                     startActivity(intent);
                 }
             }
@@ -78,14 +77,17 @@ public class AjustesFragment extends Fragment {
         borrarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Usuario usuario = new Usuario(mUsuario.getID(),mUsuario.getNomUsuario(),mUsuario.getEmail(),mUsuario.getPassword());
+                Usuario usuario = new Usuario(UsuarioGlobal.getID(),UsuarioGlobal.getNomUsuario(),UsuarioGlobal.getEmail(),UsuarioGlobal.getPassword());
                 AppExecutors.getInstance().diskIO().execute(new Runnable() {
                     @Override
                     public void run() {
-                        Log.v("Usuario", mUsuario.getNomUsuario());
+                        Log.v("Usuario", String.valueOf(usuario.getID()));
                         CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance(getActivity().getApplicationContext());
                         UsuarioDao usuarioDao = cheapGamesDB.usuarioDao();
-                        usuarioDao.delete(usuario);
+                        int test = usuarioDao.delete(usuario);
+                        Log.v("Codigo delete: ", String.valueOf(test));
+                        Intent intent = new Intent(getActivity(), PantallaInicial.class);
+                        startActivity(intent);
                     }
                 });
             }

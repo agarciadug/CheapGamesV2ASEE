@@ -8,6 +8,13 @@ public class UsuarioGlobal {
     public static String email="invitado@gmail.com";
     public static String password="";
 
+    public UsuarioGlobal(Long ID, String nomUsuario, String email, String password){
+        this.ID = ID;
+        this.nomUsuario = nomUsuario;
+        this.email = email;
+        this.password = password;
+    }
+
     public static Long getID() {
         return ID;
     }

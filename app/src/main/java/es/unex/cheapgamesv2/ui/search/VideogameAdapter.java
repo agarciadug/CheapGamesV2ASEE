@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import es.unex.cheapgamesv2.R;
+import es.unex.cheapgamesv2.data.model.Usuario;
 import es.unex.cheapgamesv2.data.model.Videogame;
 import es.unex.cheapgamesv2.ui.detail.DetailVideogameActivity;
 
@@ -92,7 +93,7 @@ public class VideogameAdapter extends RecyclerView.Adapter<VideogameAdapter.MyVi
         notifyDataSetChanged();
     }
 
-    public void clear(){
+    public void clear() {
         mVideojuegosLista.clear();
         notifyDataSetChanged();
     }

@@ -111,9 +111,10 @@ public class Usuario implements Parcelable {
 	// Take a set of String data values and
 	// package them for transport in an Intent
 
-	public static void packageIntent(Intent intent, String nomUsuario,
+	public static void packageIntent(Intent intent, long id, String nomUsuario,
 									 String email, String password) {
 
+		intent.putExtra(Usuario.ID, id);
 		intent.putExtra(Usuario.NOMUSUARIO, nomUsuario);
 		intent.putExtra(Usuario.EMAIL, email);
 		intent.putExtra(Usuario.PASSWORD, password);

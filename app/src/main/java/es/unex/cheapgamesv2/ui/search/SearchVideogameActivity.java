@@ -18,6 +18,7 @@ import es.unex.cheapgamesv2.AppContainer;
 import es.unex.cheapgamesv2.InjectorUtils;
 import es.unex.cheapgamesv2.MyApplication;
 import es.unex.cheapgamesv2.R;
+import es.unex.cheapgamesv2.data.model.Usuario;
 import es.unex.cheapgamesv2.data.model.Videogame;
 import es.unex.cheapgamesv2.databinding.ActivitySearchVideogameBinding;
 
@@ -36,10 +37,8 @@ public class SearchVideogameActivity extends AppCompatActivity {
 
         binding = ActivitySearchVideogameBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
         mRecyclerView = findViewById(R.id.lista_busqueda);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

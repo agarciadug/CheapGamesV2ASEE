@@ -18,6 +18,9 @@ public interface ListaSeguimientoDao {
     @Query("SELECT * FROM seguimiento WHERE usuarioID=(:usuarioID)")
     List<ListaSeguimiento> obtenerSeguimientos(String usuarioID);
 
+    @Query ("SELECT * FROM seguimiento WHERE videogameID=(:videogameID) and usuarioID=(:usuarioID)")
+    List<ListaSeguimiento> obtenerSeguido(String videogameID, String usuarioID);
+
     @Query ("DELETE FROM seguimiento WHERE videogameID=(:videogameID) and usuarioID=(:usuarioID)")
     public int borrarSeguimiento(String videogameID, String usuarioID);
 }

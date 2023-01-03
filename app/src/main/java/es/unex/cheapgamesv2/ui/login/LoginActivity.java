@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import es.unex.cheapgamesv2.MenuInicialActivity;
 import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.Usuario;
+import es.unex.cheapgamesv2.data.model.UsuarioGlobal;
 import es.unex.cheapgamesv2.data.room.CheapGamesDB;
 import es.unex.cheapgamesv2.data.room.UsuarioDao;
 
@@ -53,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                             }else{
 
                                 Intent intent = new Intent(LoginActivity.this, MenuInicialActivity.class);
-                                usuario.packageIntent(intent, usuario.getNomUsuario(), usuario.getEmail(), usuario.getPassword());
+                                UsuarioGlobal userG = new UsuarioGlobal(usuario.getID(), usuario.getNomUsuario(),usuario.getEmail(),usuario.getPassword());
                                 startActivity(intent);
                             }
                         }
