@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/nav_seguimiento"
-        android:name="es.unex.cheapgamesv2.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:name="es.unex.cheapgamesv2.ui.tracing.TracingFragment"
+        android:label="En seguimiento"
+        tools:layout="@layout/fragment_tracing" />
     <fragment
         android:id="@+id/ajustesFragment"
         android:name="es.unex.cheapgamesv2.ui.ajustes.AjustesFragment"
-        android:label="fragment_ajustes"
+        android:label="Ajustes"
         tools:layout="@layout/fragment_ajustes" />
 
 </navigation>

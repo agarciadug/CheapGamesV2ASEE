@@ -7,9 +7,7 @@ import es.unex.cheapgamesv2.data.model.DetalleVideojuegoRespuesta;
 import es.unex.cheapgamesv2.data.model.Store;
 import es.unex.cheapgamesv2.data.model.Videogame;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface CheapSharkApi {
@@ -21,7 +19,7 @@ public interface CheapSharkApi {
     Call<DetalleVideojuegoRespuesta> getVideogamesById(@Query("id") String id);
 
     @GET("games")
-    Call<List<Videogame>> getVideogameByTitleAndSteamAppID(@Query("title")String title, @Query("steamAppID") String steamAppID);
+    Call<List<Videogame>> getVideogameExact(@Query("title") String title, @Query("exact") String exact);
 
     @GET("stores")
     Call<ArrayList<Store>> getAllStores();

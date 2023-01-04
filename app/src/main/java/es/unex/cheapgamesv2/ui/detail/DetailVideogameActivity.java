@@ -90,7 +90,7 @@ public class DetailVideogameActivity extends AppCompatActivity {
                         public void onClick(View v) {
                             AppExecutors.getInstance().diskIO().execute(() -> {
                                 Log.v("id del usuario", String.valueOf(UsuarioGlobal.getID()));
-                                ListaSeguimiento seguimiento = new ListaSeguimiento(videojuego.getGameID(), String.valueOf(UsuarioGlobal.getID()));
+                                ListaSeguimiento seguimiento = new ListaSeguimiento(videojuego.getGameID(),videojuego.getExternal(), String.valueOf(UsuarioGlobal.getID()));
                                 listaSeguimientoDao.insertarSeguimiento(seguimiento);
                                 finish(); startActivity(getIntent());
                             });
@@ -104,7 +104,7 @@ public class DetailVideogameActivity extends AppCompatActivity {
                         public void onClick(View v) {
                             AppExecutors.getInstance().diskIO().execute(() -> {
                                 Log.v("id del usuario", String.valueOf(UsuarioGlobal.getID()));
-                                ListaSeguimiento seguimiento = new ListaSeguimiento(videojuego.getGameID(), String.valueOf(UsuarioGlobal.getID()));
+                                ListaSeguimiento seguimiento = new ListaSeguimiento(videojuego.getGameID(), videojuego.getExternal(), String.valueOf(UsuarioGlobal.getID()));
                                 listaSeguimientoDao.borrarSeguimiento(videojuego.getGameID(), String.valueOf(UsuarioGlobal.getID()));
                                 finish(); startActivity(getIntent());
                             });

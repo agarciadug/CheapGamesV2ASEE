@@ -2,7 +2,7 @@ package es.unex.cheapgamesv2.data.model;
 
 public class VideojuegoGlobal {
 
-    private static VideojuegoGlobal videojuegoGlobal=new VideojuegoGlobal();
+    private static VideojuegoGlobal videojuegoGlobal = new VideojuegoGlobal();
 
     private static String gameID;
 
