@@ -1,6 +1,7 @@
 package es.unex.cheapgamesv2.ui.detail;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.unex.cheapgamesv2.AppExecutors;
@@ -25,10 +27,16 @@ public class DealVideogameAdapter extends RecyclerView.Adapter<DealVideogameAdap
 
     private final Context mContex;
     private static List<VideogameDeal> mVideogameDeals;
+    private static List<Tienda> mListTienda;
 
-    public DealVideogameAdapter(Context context, List<VideogameDeal> items) {
+    public DealVideogameAdapter(Context context, List<VideogameDeal> items, List<Tienda> tiendas) {
         mContex = context;
         mVideogameDeals = items;
+        mListTienda=new ArrayList<>();
+        Log.v("tam tiendasdva", String.valueOf(tiendas.size()));
+        for(int i=0; i<tiendas.size(); i++){
+            mListTienda.add(tiendas.get(i));
+        }
     }
 
 
@@ -50,12 +58,28 @@ public class DealVideogameAdapter extends RecyclerView.Adapter<DealVideogameAdap
         holder.mItem = mVideogameDeals.get(position);
         holder.mPrecioBView.setText(mVideogameDeals.get(position).getPrice());
         holder.mPrecioOView.setText(mVideogameDeals.get(position).getRetailPrice());
-        CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance(mContex);
-        TiendaDao tiendaDao = cheapGamesDB.tiendaDao();
-        AppExecutors.getInstance().diskIO().execute(() -> {
+        //CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance(mContex);
+        //TiendaDao tiendaDao = cheapGamesDB.tiendaDao();
+        boolean encontrada = false;
+        int i=0;
+        Log.v("Busq tienda", String.valueOf(mListTienda.size()));
+        /*while(!encontrada && i<mListTienda.size()){
+            Log.v("Busq tienda: LisTienda", mListTienda.get(i).getStoreID());
+            Log.v("Busq tienda: ListVDeals", mVideogameDeals.get(position).getStoreID());
+            if(mListTienda.get(i).getStoreID().equals(mVideogameDeals.get(position).getStoreID())){
+                holder.mNomTienda.setText(mListTienda.get(i).getStoreName());
+                Log.v("Busq tienda", "tienda encontrada");
+                encontrada=true;
+            }
+            else{
+                i++;
+            }
+        }*/
+        /*AppExecutors.getInstance().diskIO().execute(() -> {
             Tienda t = tiendaDao.getTiendaByID(mVideogameDeals.get(position).getStoreID());
+            mVideogameDeals.get(position);
             holder.mNomTienda.setText(t.getStoreName());
-        });
+        });*/
 
 
     }

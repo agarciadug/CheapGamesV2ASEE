@@ -30,7 +30,7 @@ import es.unex.cheapgamesv2.ui.login.PantallaInicial;
 public class AjustesFragment extends Fragment {
 
     private FragmentAjustesBinding binding;
-    Button editarUsuario, borrarUsuario, cerrarSesion;
+    Button editarUsuario, borrarUsuario;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -86,6 +86,7 @@ public class AjustesFragment extends Fragment {
                         UsuarioDao usuarioDao = cheapGamesDB.usuarioDao();
                         int test = usuarioDao.delete(usuario);
                         Log.v("Codigo delete: ", String.valueOf(test));
+                        UsuarioGlobal.resetearUsuario();
                         Intent intent = new Intent(getActivity(), PantallaInicial.class);
                         startActivity(intent);
                     }

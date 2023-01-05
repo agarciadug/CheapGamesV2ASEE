@@ -17,7 +17,8 @@
         <activity
             android:name=".ui.detail.DetailVideogameActivity"
             android:exported="false"
-            android:parentActivityName=".ui.search.SearchVideogameActivity">
+            android:parentActivityName=".ui.search.SearchVideogameActivity"
+            android:label="Detalle">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

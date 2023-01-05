@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -86,6 +87,7 @@ public class MenuInicialActivity extends AppCompatActivity {
         b_sesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                UsuarioGlobal.resetearUsuario();
                 Intent intent = new Intent(MenuInicialActivity.this, PantallaInicial.class);
                 startActivity(intent);
             }

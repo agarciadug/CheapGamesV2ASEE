@@ -15,6 +15,13 @@ public class UsuarioGlobal {
         this.password = password;
     }
 
+    public static void resetearUsuario(){
+        UsuarioGlobal.ID = Long.valueOf(0);
+        UsuarioGlobal.nomUsuario = "Invitado";
+        UsuarioGlobal.email = "invitado@gmail.com";
+        UsuarioGlobal.password = "";
+    }
+
     public static Long getID() {
         return ID;
     }

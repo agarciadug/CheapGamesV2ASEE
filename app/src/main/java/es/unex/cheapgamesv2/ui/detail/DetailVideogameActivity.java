@@ -25,11 +25,13 @@ import es.unex.cheapgamesv2.InjectorUtils;
 import es.unex.cheapgamesv2.MyApplication;
 import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.ListaSeguimiento;
+import es.unex.cheapgamesv2.data.model.Tienda;
 import es.unex.cheapgamesv2.data.model.Usuario;
 import es.unex.cheapgamesv2.data.model.UsuarioGlobal;
 import es.unex.cheapgamesv2.data.model.Videogame;
 import es.unex.cheapgamesv2.data.room.CheapGamesDB;
 import es.unex.cheapgamesv2.data.room.ListaSeguimientoDao;
+import es.unex.cheapgamesv2.data.room.TiendaDao;
 import es.unex.cheapgamesv2.ui.search.SearchVideogameActivityViewModel;
 import es.unex.cheapgamesv2.ui.search.SearchVideogameViewModelFactory;
 import es.unex.cheapgamesv2.ui.search.VideogameAdapter;
@@ -42,6 +44,7 @@ public class DetailVideogameActivity extends AppCompatActivity {
     private ImageView img_videogame;
     private TextView title_videogame;
     List<ListaSeguimiento> listaSeguido;
+    List<Tienda> listaTienda;
     Button b_Seguimiento;
 
     @Override
@@ -58,7 +61,17 @@ public class DetailVideogameActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.list_precios);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new DealVideogameAdapter(this,new ArrayList<>());
+        CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance(this);
+        TiendaDao tiendaDao = cheapGamesDB.tiendaDao();
+        listaTienda=new ArrayList<>();
+        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                listaTienda=tiendaDao.getAllTienda();
+                Log.v("tam tiendas", String.valueOf(listaTienda.size()));
+            }
+        });
+        mAdapter = new DealVideogameAdapter(this,new ArrayList<>(),listaTienda);
         mRecyclerView.setAdapter(mAdapter);
 
         DetailVideogameViewModelFactory dVfactory = InjectorUtils.provideDetailVideogameViewModelFactory(this.getApplicationContext());
@@ -73,46 +86,51 @@ public class DetailVideogameActivity extends AppCompatActivity {
 
         //hacer funcionalidad boton seguimiento
         b_Seguimiento=findViewById(R.id.b_seguimiento);
-        Videogame videojuego = getIntent().getParcelableExtra("videojuego",Videogame.class);
-        CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance (getApplicationContext());
-        ListaSeguimientoDao listaSeguimientoDao = cheapGamesDB.listaSeguimientoDao();
-        listaSeguido = new ArrayList<>();
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                Log.v("Datos", videojuego.getGameID() + ", " + UsuarioGlobal.getID());
-                listaSeguido = listaSeguimientoDao.obtenerSeguido(videojuego.getGameID(),String.valueOf(UsuarioGlobal.getID()));
-                Log.v("Tamaño lista", String.valueOf(listaSeguido.size()));
-                if(listaSeguido.size()!=1){
-                    b_Seguimiento.setText("AÑADIR A SEGUIMIENTO");
-                    b_Seguimiento.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            AppExecutors.getInstance().diskIO().execute(() -> {
-                                Log.v("id del usuario", String.valueOf(UsuarioGlobal.getID()));
-                                ListaSeguimiento seguimiento = new ListaSeguimiento(videojuego.getGameID(),videojuego.getExternal(), String.valueOf(UsuarioGlobal.getID()));
-                                listaSeguimientoDao.insertarSeguimiento(seguimiento);
-                                finish(); startActivity(getIntent());
-                            });
-                        }
-                    });
+        if(UsuarioGlobal.getID()>0){
+            Videogame videojuego = getIntent().getParcelableExtra("videojuego",Videogame.class);
+            //CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance (getApplicationContext());
+            ListaSeguimientoDao listaSeguimientoDao = cheapGamesDB.listaSeguimientoDao();
+            listaSeguido = new ArrayList<>();
+            AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                @Override
+                public void run() {
+                    Log.v("Datos", videojuego.getGameID() + ", " + UsuarioGlobal.getID());
+                    listaSeguido = listaSeguimientoDao.obtenerSeguido(videojuego.getGameID(),String.valueOf(UsuarioGlobal.getID()));
+                    Log.v("Tamaño lista", String.valueOf(listaSeguido.size()));
+                    if(listaSeguido.size()!=1){
+                        b_Seguimiento.setText("AÑADIR A SEGUIMIENTO");
+                        b_Seguimiento.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                AppExecutors.getInstance().diskIO().execute(() -> {
+                                    Log.v("id del usuario", String.valueOf(UsuarioGlobal.getID()));
+                                    ListaSeguimiento seguimiento = new ListaSeguimiento(videojuego.getGameID(),videojuego.getExternal(), String.valueOf(UsuarioGlobal.getID()));
+                                    listaSeguimientoDao.insertarSeguimiento(seguimiento);
+                                    finish(); startActivity(getIntent());
+                                });
+                            }
+                        });
+                    }
+                    else {
+                        b_Seguimiento.setText("DEJAR DE SEGUIR");
+                        b_Seguimiento.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                AppExecutors.getInstance().diskIO().execute(() -> {
+                                    Log.v("id del usuario", String.valueOf(UsuarioGlobal.getID()));
+                                    listaSeguimientoDao.borrarSeguimiento(videojuego.getGameID(), String.valueOf(UsuarioGlobal.getID()));
+                                    finish(); startActivity(getIntent());
+                                });
+                            }
+                        });
+                    }
                 }
-                else {
-                    b_Seguimiento.setText("DEJAR DE SEGUIR");
-                    b_Seguimiento.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            AppExecutors.getInstance().diskIO().execute(() -> {
-                                Log.v("id del usuario", String.valueOf(UsuarioGlobal.getID()));
-                                ListaSeguimiento seguimiento = new ListaSeguimiento(videojuego.getGameID(), videojuego.getExternal(), String.valueOf(UsuarioGlobal.getID()));
-                                listaSeguimientoDao.borrarSeguimiento(videojuego.getGameID(), String.valueOf(UsuarioGlobal.getID()));
-                                finish(); startActivity(getIntent());
-                            });
-                        }
-                    });
-                }
-            }
-        });
+            });
+        }
+        else{
+            b_Seguimiento.setVisibility(View.INVISIBLE);
+        }
+
 
 
 

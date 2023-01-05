@@ -6,6 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.unex.cheapgamesv2.data.model.Tienda;
@@ -19,6 +20,9 @@ public interface TiendaDao {
 
     @Query("SELECT * FROM tienda WHERE storeID=(:storeID)")
     Tienda getTiendaByID(String storeID);
+
+    @Query("SELECT * FROM tienda")
+    List<Tienda> getAllTienda();
 
     @Query("DELETE FROM tienda WHERE storeID=(:storeID)")
     int deleteTiendaByID(String storeID);
