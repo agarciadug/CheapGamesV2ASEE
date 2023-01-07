@@ -42,7 +42,7 @@ public class DetailVideogameActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
 
     private ImageView img_videogame;
-    private TextView title_videogame;
+    private TextView title_videogame, title_videogame2;
     List<ListaSeguimiento> listaSeguido;
     List<Tienda> listaTienda;
     Button b_Seguimiento;
@@ -57,6 +57,7 @@ public class DetailVideogameActivity extends AppCompatActivity {
 
         img_videogame=findViewById(R.id.image_Videogame);
         title_videogame = findViewById(R.id.nom_videogame);
+        title_videogame2 = findViewById(R.id.nom_videogame2);
         Videogame vg = GetDataFromIntent();
         mRecyclerView = findViewById(R.id.list_precios);
         mRecyclerView.setHasFixedSize(true);
@@ -64,14 +65,14 @@ public class DetailVideogameActivity extends AppCompatActivity {
         CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance(this);
         TiendaDao tiendaDao = cheapGamesDB.tiendaDao();
         listaTienda=new ArrayList<>();
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+        /*AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
                 listaTienda=tiendaDao.getAllTienda();
                 Log.v("tam tiendas", String.valueOf(listaTienda.size()));
             }
-        });
-        mAdapter = new DealVideogameAdapter(this,new ArrayList<>(),listaTienda);
+        });*/
+        mAdapter = new DealVideogameAdapter(this,new ArrayList<>());
         mRecyclerView.setAdapter(mAdapter);
 
         DetailVideogameViewModelFactory dVfactory = InjectorUtils.provideDetailVideogameViewModelFactory(this.getApplicationContext());
@@ -130,16 +131,13 @@ public class DetailVideogameActivity extends AppCompatActivity {
         else{
             b_Seguimiento.setVisibility(View.INVISIBLE);
         }
-
-
-
-
     }
 
     private Videogame GetDataFromIntent() {
         if(getIntent().hasExtra("videojuego")){
             Videogame videojuego = getIntent().getParcelableExtra("videojuego",Videogame.class);
             title_videogame.setText(videojuego.getExternal());
+            title_videogame2.setText("Pito");
             Glide.with(DetailVideogameActivity.this).load(videojuego.getThumb()).into(img_videogame);
             return videojuego;
         }

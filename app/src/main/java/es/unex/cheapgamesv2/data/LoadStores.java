@@ -42,11 +42,12 @@ public class LoadStores {
                     for (Store s : respuestaStore) {
                         Log.v("Tiendas", s.getStoreName());
                         Tienda t = new Tienda(s.getStoreID(),s.getStoreName());
-                        AppExecutors.getInstance().diskIO().execute(() -> {
+                        /*AppExecutors.getInstance().diskIO().execute(() -> {
                             if(cheapGamesDB.tiendaDao().getTiendaByID(t.getStoreID())==null){
                                 cheapGamesDB.tiendaDao().insertarTienda(t);
                             }
-                        });
+                        });*/
+                        Tienda.insertarTienda(t);
                     }
 
                 }

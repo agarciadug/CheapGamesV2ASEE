@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondoapp"
     tools:context=".ui.detail.DetailVideogameActivity">
 
 
     <ImageView
         android:id="@+id/image_Videogame"
-        android:layout_width="258dp"
-        android:layout_height="246dp"
+        android:layout_width="359dp"
+        android:layout_height="248dp"
         android:layout_marginTop="16dp"
-        android:radius="8dp"
+        android:background="@drawable/videogame_card_style"
+        android:radius="5dp"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,11 +28,42 @@
         android:layout_marginTop="16dp"
         android:text="Titulo_juego"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_Videogame"></TextView>
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aquí tienes las mejores ofertas para "
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/list_precios"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nom_videogame"
+        app:layout_constraintVertical_bias="0.76" />
+
+    <TextView
+        android:id="@+id/nom_videogame2"
+        android:layout_width="53dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="12dp"
+        android:text="Titulo_juego"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/list_precios"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/nom_videogame"
+        app:layout_constraintVertical_bias="0.0"></TextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_precios"
@@ -40,13 +74,14 @@
         app:layout_constraintBottom_toTopOf="@+id/b_seguimiento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nom_videogame" />
+        app:layout_constraintTop_toBottomOf="@+id/nom_videogame"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/b_seguimiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="52dp"
         android:text="Añadir a seguimiento"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

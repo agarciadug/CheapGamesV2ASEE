@@ -43,7 +43,7 @@ public class VideogameAdapter extends RecyclerView.Adapter<VideogameAdapter.MyVi
         Glide.with(mContex).load(mVideojuegosLista.get(position).getThumb()).into(holder.img);
         holder.mItem = mVideojuegosLista.get(position);
         holder.mNombreView.setText(mVideojuegosLista.get(position).getExternal());
-        holder.mPrecioView.setText(mVideojuegosLista.get(position).getCheapest());
+        holder.mPrecioView.setText(mVideojuegosLista.get(position).getCheapest()+"€");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

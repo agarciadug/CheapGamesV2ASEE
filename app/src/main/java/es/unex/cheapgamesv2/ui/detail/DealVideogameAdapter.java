@@ -1,6 +1,8 @@
 package es.unex.cheapgamesv2.ui.detail;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,14 +31,10 @@ public class DealVideogameAdapter extends RecyclerView.Adapter<DealVideogameAdap
     private static List<VideogameDeal> mVideogameDeals;
     private static List<Tienda> mListTienda;
 
-    public DealVideogameAdapter(Context context, List<VideogameDeal> items, List<Tienda> tiendas) {
+    public DealVideogameAdapter(Context context, List<VideogameDeal> items) {
         mContex = context;
         mVideogameDeals = items;
-        mListTienda=new ArrayList<>();
-        Log.v("tam tiendasdva", String.valueOf(tiendas.size()));
-        for(int i=0; i<tiendas.size(); i++){
-            mListTienda.add(tiendas.get(i));
-        }
+
     }
 
 
@@ -62,26 +60,26 @@ public class DealVideogameAdapter extends RecyclerView.Adapter<DealVideogameAdap
         //TiendaDao tiendaDao = cheapGamesDB.tiendaDao();
         boolean encontrada = false;
         int i=0;
-        Log.v("Busq tienda", String.valueOf(mListTienda.size()));
-        /*while(!encontrada && i<mListTienda.size()){
-            Log.v("Busq tienda: LisTienda", mListTienda.get(i).getStoreID());
+        Log.v("Busq tienda", String.valueOf(Tienda.listaTiendas.size()));
+        while(!encontrada && i<Tienda.listaTiendas.size()){
+            Log.v("Busq tienda: LisTienda", Tienda.listaTiendas.get(i).getStoreID());
             Log.v("Busq tienda: ListVDeals", mVideogameDeals.get(position).getStoreID());
-            if(mListTienda.get(i).getStoreID().equals(mVideogameDeals.get(position).getStoreID())){
-                holder.mNomTienda.setText(mListTienda.get(i).getStoreName());
+            if(Tienda.listaTiendas.get(i).getStoreID().equals(mVideogameDeals.get(position).getStoreID())){
+                holder.mNomTienda.setText(Tienda.listaTiendas.get(i).getStoreName());
                 Log.v("Busq tienda", "tienda encontrada");
                 encontrada=true;
             }
             else{
                 i++;
             }
-        }*/
-        /*AppExecutors.getInstance().diskIO().execute(() -> {
-            Tienda t = tiendaDao.getTiendaByID(mVideogameDeals.get(position).getStoreID());
-            mVideogameDeals.get(position);
-            holder.mNomTienda.setText(t.getStoreName());
-        });*/
-
-
+        }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.cheapshark.com/redirect?dealID="+holder.mItem.getDealID()));
+                holder.itemView.getContext().startActivity(browserIntent);
+            }
+        });
     }
 
     @Override

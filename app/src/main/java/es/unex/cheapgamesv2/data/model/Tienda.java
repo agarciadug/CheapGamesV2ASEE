@@ -8,6 +8,9 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity(tableName = "tienda")
 public class Tienda {
 
@@ -15,6 +18,8 @@ public class Tienda {
     public final static String STORE_ID = "storeID";
     @Ignore
     public final static String STORE_NAME = "storeName";
+
+    public static List<Tienda> listaTiendas = new ArrayList<>();
 
 
     @PrimaryKey
@@ -45,6 +50,10 @@ public class Tienda {
 
     public void setStoreName(String storeName) {
         mStoreName = storeName;
+    }
+
+    public static void insertarTienda(Tienda t){
+        listaTiendas.add(t);
     }
 
     public static void packageIntent(Intent intent, String storeID, String storeName) {
