@@ -42,7 +42,7 @@ public class DetailVideogameActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
 
     private ImageView img_videogame;
-    private TextView title_videogame, title_videogame2;
+    private TextView title_videogame;
     List<ListaSeguimiento> listaSeguido;
     List<Tienda> listaTienda;
     Button b_Seguimiento;
@@ -57,7 +57,6 @@ public class DetailVideogameActivity extends AppCompatActivity {
 
         img_videogame=findViewById(R.id.image_Videogame);
         title_videogame = findViewById(R.id.nom_videogame);
-        title_videogame2 = findViewById(R.id.nom_videogame2);
         Videogame vg = GetDataFromIntent();
         mRecyclerView = findViewById(R.id.list_precios);
         mRecyclerView.setHasFixedSize(true);
@@ -137,7 +136,6 @@ public class DetailVideogameActivity extends AppCompatActivity {
         if(getIntent().hasExtra("videojuego")){
             Videogame videojuego = getIntent().getParcelableExtra("videojuego",Videogame.class);
             title_videogame.setText(videojuego.getExternal());
-            title_videogame2.setText("Pito");
             Glide.with(DetailVideogameActivity.this).load(videojuego.getThumb()).into(img_videogame);
             return videojuego;
         }

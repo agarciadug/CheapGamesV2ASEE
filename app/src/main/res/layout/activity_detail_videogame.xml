@@ -23,8 +23,8 @@
 
     <TextView
         android:id="@+id/nom_videogame"
-        android:layout_width="322dp"
-        android:layout_height="44dp"
+        android:layout_width="331dp"
+        android:layout_height="79dp"
         android:layout_marginTop="16dp"
         android:text="Titulo_juego"
         android:textAlignment="center"
@@ -39,49 +39,32 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aquí tienes las mejores ofertas para "
+        android:layout_width="318dp"
+        android:layout_height="17dp"
+        android:text="Aquí tienes las mejores ofertas disponibles"
         android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/list_precios"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintHorizontal_bias="0.408"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nom_videogame"
-        app:layout_constraintVertical_bias="0.76" />
-
-    <TextView
-        android:id="@+id/nom_videogame2"
-        android:layout_width="53dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginBottom="12dp"
-        android:text="Titulo_juego"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/list_precios"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/nom_videogame"
-        app:layout_constraintVertical_bias="0.0"></TextView>
+        app:layout_constraintVertical_bias="0.448" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_precios"
         android:layout_width="327dp"
         android:layout_height="185dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="57dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/b_seguimiento"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nom_videogame"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/b_seguimiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="36dp"
         android:text="Añadir a seguimiento"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
