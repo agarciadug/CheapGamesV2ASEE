@@ -40,6 +40,7 @@ public class MenuInicialActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         LoadStores loadStores = new LoadStores(this);
         loadStores.Stores();
 

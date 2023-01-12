@@ -42,7 +42,7 @@ public class DetailVideogameActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
 
     private ImageView img_videogame;
-    private TextView title_videogame, title_videogame2;
+    private TextView title_videogame;
     List<ListaSeguimiento> listaSeguido;
     List<Tienda> listaTienda;
     Button b_Seguimiento;

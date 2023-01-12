@@ -69,7 +69,6 @@ public class TracingFragment extends Fragment {
                              Bundle savedInstanceState) {
         //View view = inflater.inflate(R.layout.fragment_tracing, container, false);
 
-
         binding = FragmentTracingBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         listSeguimiento = root.findViewById(R.id.RecyclerViewTracing);
