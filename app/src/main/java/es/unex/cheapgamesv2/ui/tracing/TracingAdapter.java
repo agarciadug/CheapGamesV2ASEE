@@ -21,9 +21,9 @@ import es.unex.cheapgamesv2.ui.detail.DetailVideogameActivity;
 
 public class TracingAdapter extends RecyclerView.Adapter<TracingAdapter.MyViewHolder> {
     private final Context mContex;
-    private static List<DetalleVideojuegoRespuesta> mVideojuegosLista;
+    private static List<Videogame> mVideojuegosLista;
 
-    public TracingAdapter(Context context, List<DetalleVideojuegoRespuesta> items) {
+    public TracingAdapter(Context context, List<Videogame> items) {
         mContex = context;
         mVideojuegosLista = items;
     }
@@ -32,7 +32,7 @@ public class TracingAdapter extends RecyclerView.Adapter<TracingAdapter.MyViewHo
     public TracingAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.videogame_list, parent, false);
+                .inflate(R.layout.tracing_list, parent, false);
 
         return new MyViewHolder(v);
     }
@@ -40,19 +40,16 @@ public class TracingAdapter extends RecyclerView.Adapter<TracingAdapter.MyViewHo
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
 
-        Glide.with(mContex).load(mVideojuegosLista.get(position).getInfo().getThumb()).into(holder.img);
+        Glide.with(mContex).load(mVideojuegosLista.get(position).getThumb()).into(holder.img);
         holder.mItem = mVideojuegosLista.get(position);
-        holder.mNombreView.setText(mVideojuegosLista.get(position).getInfo().getTitle());
-        holder.mPrecioView.setText(mVideojuegosLista.get(position).getDeals().get(0).getPrice());
+        holder.mNombreView.setText(mVideojuegosLista.get(position).getExternal());
+        holder.mPrecioView.setText(mVideojuegosLista.get(position).getCheapest()+"€");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Videogame v = new Videogame();
-                v.setExternal(mVideojuegosLista.get(position).getInfo().getTitle());
-                v.setThumb(mVideojuegosLista.get(position).getInfo().getThumb());
                 Intent intent = new Intent(holder.itemView.getContext(), DetailVideogameActivity.class)
                         .putExtra("videojuego", holder.mItem);
-                holder.itemView.getContext().startActivity(intent);*/
+                holder.itemView.getContext().startActivity(intent);
             }
         });
     }
@@ -68,7 +65,7 @@ public class TracingAdapter extends RecyclerView.Adapter<TracingAdapter.MyViewHo
         public View mView;
         public final TextView mNombreView;
         public final TextView mPrecioView;
-        public DetalleVideojuegoRespuesta mItem;
+        public Videogame mItem;
         public ImageView img;
 
         public MyViewHolder(View v) {
@@ -78,10 +75,8 @@ public class TracingAdapter extends RecyclerView.Adapter<TracingAdapter.MyViewHo
             mPrecioView = v.findViewById(R.id.precio);
             img = v.findViewById(R.id.imgJuego);
         }
-
     }
 
-/*
     public static Videogame getSelectedVideogame(int position){
         if(mVideojuegosLista!=null){
             if(mVideojuegosLista.size()>0){
@@ -99,5 +94,5 @@ public class TracingAdapter extends RecyclerView.Adapter<TracingAdapter.MyViewHo
     public void clear() {
         mVideojuegosLista.clear();
         notifyDataSetChanged();
-    }*/
+    }
 }

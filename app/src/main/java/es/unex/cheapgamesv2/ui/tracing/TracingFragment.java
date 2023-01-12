@@ -106,7 +106,7 @@ public class TracingFragment extends Fragment {
         //Esto se tiene que ejecutar en el hilo principal
         //runOnUIThread
         lDVR.add(videojuegoSeg);
-        VideogameAdapter adapter = new VideogameAdapter(getActivity().getApplicationContext(), lDVR);
+        TracingAdapter adapter = new TracingAdapter(getActivity().getApplicationContext(), lDVR);
         listSeguimiento.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         listSeguimiento.setAdapter(adapter);
     }

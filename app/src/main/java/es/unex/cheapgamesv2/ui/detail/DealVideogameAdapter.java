@@ -2,6 +2,7 @@ package es.unex.cheapgamesv2.ui.detail;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -54,8 +55,18 @@ public class DealVideogameAdapter extends RecyclerView.Adapter<DealVideogameAdap
         int idLogo = Integer.parseInt(mVideogameDeals.get(position).getStoreID())-1;
         Glide.with(mContex).load("https://www.cheapshark.com/img/stores/icons/"+idLogo+".png").into(holder.mLogoTienda);
         holder.mItem = mVideogameDeals.get(position);
-        holder.mPrecioBView.setText(mVideogameDeals.get(position).getPrice());
-        holder.mPrecioOView.setText(mVideogameDeals.get(position).getRetailPrice());
+        holder.mPrecioBView.setText(mVideogameDeals.get(position).getPrice()+"€");
+        holder.mPrecioOView.setText(mVideogameDeals.get(position).getRetailPrice()+"€");
+        String[] parts = mVideogameDeals.get(position).getSavings().split("[.]");
+        Log.v("parts", parts[0]);
+        Log.v("parts", parts[1]);
+        if(parts[0].equals("0")){
+            holder.mSavingsView.setText("");
+        }
+        else{
+            holder.mSavingsView.setText(parts[0]+"%");
+            holder.mPrecioOView.setPaintFlags(holder.mPrecioOView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
         //CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance(mContex);
         //TiendaDao tiendaDao = cheapGamesDB.tiendaDao();
         boolean encontrada = false;
@@ -92,6 +103,7 @@ public class DealVideogameAdapter extends RecyclerView.Adapter<DealVideogameAdap
         public final TextView mNomTienda;
         public final TextView mPrecioBView;
         public final TextView mPrecioOView;
+        public final TextView mSavingsView;
         public VideogameDeal mItem;
         public ImageView mLogoTienda;
 
@@ -102,6 +114,7 @@ public class DealVideogameAdapter extends RecyclerView.Adapter<DealVideogameAdap
             mPrecioBView = v.findViewById(R.id.precio_oferta);
             mPrecioOView = v.findViewById(R.id.precio_original);
             mLogoTienda = v.findViewById(R.id.logo_tienda);
+            mSavingsView = v.findViewById(R.id.savings);
         }
 
     }

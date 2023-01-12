@@ -4,111 +4,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondoapp"
     tools:context=".ui.ajustes.AjustesFragment">
 
-    <TextView
-        android:id="@+id/edit_nomUsuario"
-        android:layout_width="155dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="44dp"
-        android:text="Nombre de usuario"
-        android:textColorHint="@color/black"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.143"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/edit_password"
-        android:layout_width="130dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="24dp"
-        android:text="Contraseña"
-        android:textSize="18dp"
-        android:textColorHint="@color/black"
+        android:id="@+id/textoAjustes"
+        android:layout_width="199dp"
+        android:layout_height="34dp"
+        android:text="Edita tu usuario"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/cambiarNomUsuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintHorizontal_bias="0.193"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cambiarEmail" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.684"></TextView>
 
     <EditText
         android:id="@+id/cambiarNomUsuario"
-        android:layout_width="320dp"
+        android:layout_width="329dp"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
+        android:layout_marginBottom="48dp"
+        android:autofillHints="Nombre usuario"
+        android:background="@drawable/edit_text_style"
         android:hint="Nombre de usuario"
-        android:textColorHint="@color/black"
-        android:inputType=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_nomUsuario" />
 
-    <TextView
-        android:id="@+id/edit_email"
-        android:layout_width="106dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:inputType="textEmailAddress"
-        android:text="Email"
-        android:textColorHint="@color/black"
-        android:textSize="18dp"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:selectAllOnFocus="true"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toTopOf="@+id/cambiarEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cambiarNomUsuario" />
+        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/cambiarEmail"
-        android:layout_width="323dp"
+        android:layout_width="329dp"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
+        android:layout_marginBottom="40dp"
+        android:autofillHints="Email"
+        android:background="@drawable/edit_text_style"
         android:hint="Email"
-        android:inputType="textPersonName"
-        android:textColorHint="@color/black"
+
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:selectAllOnFocus="true"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toTopOf="@+id/cambiarPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_email" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/cambiarPassword"
-        android:layout_width="294dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
+        android:layout_width="329dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="104dp"
+        android:autofillHints="Contraseña"
+        android:background="@drawable/edit_text_style"
         android:hint="Contraseña"
-        android:textColorHint="@color/black"
+
         android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:selectAllOnFocus="true"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toTopOf="@+id/b_aplicarCambios"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.341"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_password" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/b_aplicarCambios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginBottom="36dp"
         android:text="Aplicar cambios"
+        app:layout_constraintBottom_toTopOf="@+id/b_BorrarCuenta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cambiarPassword" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/b_BorrarCuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="96dp"
+
         android:text="Borrar cuenta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        app:layout_constraintTop_toBottomOf="@+id/b_aplicarCambios"
-        app:layout_constraintVertical_bias="0.24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
