@@ -7,19 +7,15 @@ import android.widget.SearchView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import es.unex.cheapgamesv2.AppContainer;
 import es.unex.cheapgamesv2.InjectorUtils;
 import es.unex.cheapgamesv2.MyApplication;
 import es.unex.cheapgamesv2.R;
-import es.unex.cheapgamesv2.data.model.Usuario;
-import es.unex.cheapgamesv2.data.model.Videogame;
 import es.unex.cheapgamesv2.databinding.ActivitySearchVideogameBinding;
 
 public class SearchVideogameActivity extends AppCompatActivity {
@@ -52,7 +48,7 @@ public class SearchVideogameActivity extends AppCompatActivity {
             mAdapter.swap(videogames);
             // Show the repo list or the loading screen based on whether the repos data exists and is loaded
             if (videogames != null && videogames.size() != 0) showReposDataView();
-            //else showLoading();
+
         });
 
         mSearchView = findViewById(R.id.search_videogame);
@@ -65,14 +61,9 @@ public class SearchVideogameActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                return false;
+                mAdapter.clear(); return false;
             }
         });
-
-
-        /*NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_search_videogame);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);*/
     }
 
     private void showReposDataView(){
@@ -81,10 +72,9 @@ public class SearchVideogameActivity extends AppCompatActivity {
         mRecyclerView.setVisibility(View.VISIBLE);
     }
 
-    /*@Override
+    @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_search_videogame);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }*/
+        mAdapter.clear();
+        return super.onSupportNavigateUp();
+    }
 }

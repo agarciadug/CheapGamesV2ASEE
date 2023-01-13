@@ -35,10 +35,13 @@ import es.unex.cheapgamesv2.data.room.TiendaDao;
 import es.unex.cheapgamesv2.ui.search.SearchVideogameActivityViewModel;
 import es.unex.cheapgamesv2.ui.search.SearchVideogameViewModelFactory;
 import es.unex.cheapgamesv2.ui.search.VideogameAdapter;
+import es.unex.cheapgamesv2.ui.tracing.TracingAdapter;
+import es.unex.cheapgamesv2.ui.tracing.TracingFragment;
 
 public class DetailVideogameActivity extends AppCompatActivity {
 
     private DealVideogameAdapter mAdapter;
+    private TracingAdapter tracingAdapter;
     private RecyclerView mRecyclerView;
 
     private ImageView img_videogame;
@@ -72,6 +75,7 @@ public class DetailVideogameActivity extends AppCompatActivity {
             }
         });*/
         mAdapter = new DealVideogameAdapter(this,new ArrayList<>());
+        tracingAdapter = new TracingAdapter(this, new ArrayList<>());
         mRecyclerView.setAdapter(mAdapter);
 
         DetailVideogameViewModelFactory dVfactory = InjectorUtils.provideDetailVideogameViewModelFactory(this.getApplicationContext());
@@ -88,7 +92,6 @@ public class DetailVideogameActivity extends AppCompatActivity {
         b_Seguimiento=findViewById(R.id.b_seguimiento);
         if(UsuarioGlobal.getID()>0){
             Videogame videojuego = getIntent().getParcelableExtra("videojuego",Videogame.class);
-            //CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance (getApplicationContext());
             ListaSeguimientoDao listaSeguimientoDao = cheapGamesDB.listaSeguimientoDao();
             listaSeguido = new ArrayList<>();
             AppExecutors.getInstance().diskIO().execute(new Runnable() {

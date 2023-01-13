@@ -24,8 +24,7 @@ public class SearchVideogameActivityViewModel extends ViewModel {
         mRepository.setTitleVideogame(title);
     }
 
-    public void onRefresh() {
-        mRepository.doFetchRepos(mTitle);
+    public void onRefresh() { mRepository.doFetchRepos(mTitle);
     }
 
     public LiveData<List<Videogame>> getVideogames() {

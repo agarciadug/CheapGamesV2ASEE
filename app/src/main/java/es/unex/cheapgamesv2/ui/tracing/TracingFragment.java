@@ -73,9 +73,11 @@ public class TracingFragment extends Fragment {
         View root = binding.getRoot();
         listSeguimiento = root.findViewById(R.id.RecyclerViewTracing);
 
+
         // Set the adapter
 
             seguimientos = new ArrayList<>();
+            lDVR = new ArrayList<>();
             AppExecutors.getInstance().diskIO().execute(() -> {
                 Log.v("Seguimiento", "Entrado en juegos en seguimiento");
                 CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance(getActivity().getApplicationContext());
@@ -84,7 +86,7 @@ public class TracingFragment extends Fragment {
                 Log.v("Seguimiento", "Juegos en seguimiento obtenidos");
                 Log.v("Seguimiento", String.valueOf(seguimientos.size()));
 
-                lDVR = new ArrayList<>();
+
                 for(ListaSeguimiento lS : seguimientos){
                     Log.v("Seguimiento", lS.getVideogameID());
 
@@ -108,5 +110,23 @@ public class TracingFragment extends Fragment {
         TracingAdapter adapter = new TracingAdapter(getActivity().getApplicationContext(), lDVR);
         listSeguimiento.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         listSeguimiento.setAdapter(adapter);
+    }
+
+    public void borrarVideojuego(String gameID) {
+        int i=0;
+        boolean encontrado=false;
+        Videogame v = new Videogame();
+        while(!encontrado && i<lDVR.size()){
+            if(lDVR.get(i).getGameID().equals(gameID)){
+                v = lDVR.get(i);
+                encontrado=true;
+            }
+            else{
+                i++;
+            }
+        }
+        if(encontrado){
+            lDVR.remove(v);
+        }
     }
 }
