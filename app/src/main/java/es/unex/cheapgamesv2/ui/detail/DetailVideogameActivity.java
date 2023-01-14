@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,17 +25,11 @@ import es.unex.cheapgamesv2.MyApplication;
 import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.ListaSeguimiento;
 import es.unex.cheapgamesv2.data.model.Tienda;
-import es.unex.cheapgamesv2.data.model.Usuario;
 import es.unex.cheapgamesv2.data.model.UsuarioGlobal;
 import es.unex.cheapgamesv2.data.model.Videogame;
 import es.unex.cheapgamesv2.data.room.CheapGamesDB;
 import es.unex.cheapgamesv2.data.room.ListaSeguimientoDao;
-import es.unex.cheapgamesv2.data.room.TiendaDao;
-import es.unex.cheapgamesv2.ui.search.SearchVideogameActivityViewModel;
-import es.unex.cheapgamesv2.ui.search.SearchVideogameViewModelFactory;
-import es.unex.cheapgamesv2.ui.search.VideogameAdapter;
 import es.unex.cheapgamesv2.ui.tracing.TracingAdapter;
-import es.unex.cheapgamesv2.ui.tracing.TracingFragment;
 
 public class DetailVideogameActivity extends AppCompatActivity {
 
@@ -65,15 +58,7 @@ public class DetailVideogameActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance(this);
-        TiendaDao tiendaDao = cheapGamesDB.tiendaDao();
         listaTienda=new ArrayList<>();
-        /*AppExecutors.getInstance().diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                listaTienda=tiendaDao.getAllTienda();
-                Log.v("tam tiendas", String.valueOf(listaTienda.size()));
-            }
-        });*/
         mAdapter = new DealVideogameAdapter(this,new ArrayList<>());
         tracingAdapter = new TracingAdapter(this, new ArrayList<>());
         mRecyclerView.setAdapter(mAdapter);

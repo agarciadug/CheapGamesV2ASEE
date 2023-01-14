@@ -13,13 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 import es.unex.cheapgamesv2.AppExecutors;
-import es.unex.cheapgamesv2.data.model.DetalleVideojuegoRespuesta;
-import es.unex.cheapgamesv2.data.model.Videogame;
 import es.unex.cheapgamesv2.data.model.VideogameDeal;
 import es.unex.cheapgamesv2.data.network.VideogameDetailNetworkDataSource;
-import es.unex.cheapgamesv2.data.network.VideogameNetworkDataSource;
-import es.unex.cheapgamesv2.data.room.TiendaDao;
-import es.unex.cheapgamesv2.data.room.VideogameDao;
 import es.unex.cheapgamesv2.data.room.VideogameDealDao;
 
 public class DealRepository {

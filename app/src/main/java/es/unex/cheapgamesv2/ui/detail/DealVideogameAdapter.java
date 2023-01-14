@@ -16,15 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import es.unex.cheapgamesv2.AppExecutors;
 import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.Tienda;
 import es.unex.cheapgamesv2.data.model.VideogameDeal;
-import es.unex.cheapgamesv2.data.room.CheapGamesDB;
-import es.unex.cheapgamesv2.data.room.TiendaDao;
 
 public class DealVideogameAdapter extends RecyclerView.Adapter<DealVideogameAdapter.MyViewHolder>{
 

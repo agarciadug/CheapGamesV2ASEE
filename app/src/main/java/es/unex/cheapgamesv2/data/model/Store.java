@@ -15,12 +15,6 @@ public class Store implements Parcelable
     @SerializedName("storeName")
     @Expose
     private String storeName;
-    /*@SerializedName("isActive")
-    @Expose
-    private Integer isActive;
-    @SerializedName("images")
-    @Expose
-    private Images images;*/
     public final static Creator<Store> CREATOR = new Creator<Store>() {
 
         @SuppressWarnings({
@@ -39,8 +33,6 @@ public class Store implements Parcelable
     protected Store(android.os.Parcel in) {
         this.storeID = ((String) in.readValue((String.class.getClassLoader())));
         this.storeName = ((String) in.readValue((String.class.getClassLoader())));
-        /*this.isActive = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.images = ((Images) in.readValue((Images.class.getClassLoader())));*/
     }
 
     public Store() {
@@ -62,27 +54,10 @@ public class Store implements Parcelable
         this.storeName = storeName;
     }
 
-    /*public Integer getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(Integer isActive) {
-        this.isActive = isActive;
-    }
-
-    public Images getImages() {
-        return images;
-    }
-
-    public void setImages(Images images) {
-        this.images = images;
-    }*/
 
     public void writeToParcel(android.os.Parcel dest, int flags) {
         dest.writeValue(storeID);
         dest.writeValue(storeName);
-        /*dest.writeValue(isActive);
-        dest.writeValue(images);*/
     }
 
     public int describeContents() {
