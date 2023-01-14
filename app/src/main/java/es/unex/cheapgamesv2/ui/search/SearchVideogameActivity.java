@@ -73,6 +73,8 @@ public class SearchVideogameActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         mAdapter.clear();
+        mSearchView.setQuery("235SAD3242GSDG",true);
+        mSearchView.setVisibility(View.INVISIBLE);
         return super.onSupportNavigateUp();
     }
 }

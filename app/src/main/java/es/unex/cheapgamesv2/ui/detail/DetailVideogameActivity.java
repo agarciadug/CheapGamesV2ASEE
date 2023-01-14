@@ -6,12 +6,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -21,6 +23,7 @@ import java.util.List;
 import es.unex.cheapgamesv2.AppContainer;
 import es.unex.cheapgamesv2.AppExecutors;
 import es.unex.cheapgamesv2.InjectorUtils;
+import es.unex.cheapgamesv2.MenuInicialActivity;
 import es.unex.cheapgamesv2.MyApplication;
 import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.ListaSeguimiento;
@@ -94,7 +97,8 @@ public class DetailVideogameActivity extends AppCompatActivity {
                                     Log.v("id del usuario", String.valueOf(UsuarioGlobal.getID()));
                                     ListaSeguimiento seguimiento = new ListaSeguimiento(videojuego.getGameID(),videojuego.getExternal(), String.valueOf(UsuarioGlobal.getID()));
                                     listaSeguimientoDao.insertarSeguimiento(seguimiento);
-                                    finish(); startActivity(getIntent());
+                                    Intent intent = new Intent(DetailVideogameActivity.this, MenuInicialActivity.class);
+                                    startActivity(intent);
                                 });
                             }
                         });
@@ -107,7 +111,8 @@ public class DetailVideogameActivity extends AppCompatActivity {
                                 AppExecutors.getInstance().diskIO().execute(() -> {
                                     Log.v("id del usuario", String.valueOf(UsuarioGlobal.getID()));
                                     listaSeguimientoDao.borrarSeguimiento(videojuego.getGameID(), String.valueOf(UsuarioGlobal.getID()));
-                                    finish(); startActivity(getIntent());
+                                    Intent intent = new Intent(DetailVideogameActivity.this, MenuInicialActivity.class);
+                                    startActivity(intent);
                                 });
                             }
                         });
