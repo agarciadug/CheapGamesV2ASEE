@@ -63,8 +63,7 @@ public class DealVideogameAdapter extends RecyclerView.Adapter<DealVideogameAdap
             holder.mSavingsView.setText(parts[0]+"%");
             holder.mPrecioOView.setPaintFlags(holder.mPrecioOView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
-        //CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance(mContex);
-        //TiendaDao tiendaDao = cheapGamesDB.tiendaDao();
+
         boolean encontrada = false;
         int i=0;
         Log.v("Busq tienda", String.valueOf(Tienda.listaTiendas.size()));

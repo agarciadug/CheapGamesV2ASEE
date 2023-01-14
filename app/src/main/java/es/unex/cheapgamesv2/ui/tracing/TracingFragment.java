@@ -54,20 +54,10 @@ public class TracingFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    /*
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-        }
-    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //View view = inflater.inflate(R.layout.fragment_tracing, container, false);
 
         binding = FragmentTracingBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -104,29 +94,10 @@ public class TracingFragment extends Fragment {
     }
 
     private void PutDataIntoRecyclerView(Videogame videojuegoSeg) {
-        //Esto se tiene que ejecutar en el hilo principal
-        //runOnUIThread
         lDVR.add(videojuegoSeg);
         TracingAdapter adapter = new TracingAdapter(getActivity().getApplicationContext(), lDVR);
         listSeguimiento.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         listSeguimiento.setAdapter(adapter);
     }
 
-    public void borrarVideojuego(String gameID) {
-        int i=0;
-        boolean encontrado=false;
-        Videogame v = new Videogame();
-        while(!encontrado && i<lDVR.size()){
-            if(lDVR.get(i).getGameID().equals(gameID)){
-                v = lDVR.get(i);
-                encontrado=true;
-            }
-            else{
-                i++;
-            }
-        }
-        if(encontrado){
-            lDVR.remove(v);
-        }
-    }
 }

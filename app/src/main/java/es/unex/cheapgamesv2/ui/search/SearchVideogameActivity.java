@@ -67,8 +67,6 @@ public class SearchVideogameActivity extends AppCompatActivity {
     }
 
     private void showReposDataView(){
-        /*mProgressBar.setVisibility(View.GONE);
-        mSwipeRefreshLayout.setRefreshing(false);*/
         mRecyclerView.setVisibility(View.VISIBLE);
     }
 

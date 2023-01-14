@@ -66,23 +66,4 @@ public class DetailVideogameAdapter extends RecyclerView.Adapter<DetailVideogame
 
     }
 
-    /*métodos para el otro adapter de deals
-    public static VideogameDeal getSelectedVideogame(int position){
-        if(mVideojuegosDealLista!=null){
-            if(mVideojuegosDealLista.size()>0){
-                return mVideojuegosDealLista.get(position);
-            }
-        }
-        return null;
-    }
-
-    public void swap(List<VideogameDeal> dataset){
-        mVideojuegosDealLista = dataset;
-        notifyDataSetChanged();
-    }
-
-    public void clear(){
-        mVideojuegosLista.clear();
-        notifyDataSetChanged();
-    }*/
 }

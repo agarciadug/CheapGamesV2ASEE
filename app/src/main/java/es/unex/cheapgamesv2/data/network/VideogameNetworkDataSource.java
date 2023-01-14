@@ -38,7 +38,6 @@ public class VideogameNetworkDataSource {
     public void fetchRepos(String titleVideogame) {
         Log.d(LOG_TAG, "Fetch repos started");
         // Get gata from network and pass it to LiveData
-        //AppExecutors.getInstance().networkIO().execute(new ReposNetworkLoaderRunnable(username, repos -> mDownloadedRepos.postValue(repos.toArray(new Repo[0]))));
         AppExecutors.getInstance().networkIO().execute(new VideogamesNetworkLoaderRunnable(titleVideogame, videogames -> mDownloadedVideogames.postValue(videogames.toArray(new Videogame[0]))));
     }
 }
