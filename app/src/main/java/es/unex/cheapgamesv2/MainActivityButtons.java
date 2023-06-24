@@ -16,6 +16,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import es.unex.cheapgamesv2.ui.ajustes.AjustesFragment;
 import es.unex.cheapgamesv2.ui.home.HomeFragment;
 import es.unex.cheapgamesv2.ui.search.SearchVideogameActivity;
+import es.unex.cheapgamesv2.ui.search.SearchVideogameFragment;
 import es.unex.cheapgamesv2.ui.tracing.TracingFragment;
 
 public class MainActivityButtons extends AppCompatActivity {
@@ -67,15 +68,18 @@ public class MainActivityButtons extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_search:
-                Intent intent = new Intent(MainActivityButtons.this, SearchVideogameActivity.class);
-                startActivity(intent);
-                break;
+                Fragment searchFragment = new SearchVideogameFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_container, searchFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                return true;
             default:
-                break;
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
+
 
 }
