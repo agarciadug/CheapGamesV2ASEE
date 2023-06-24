@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import es.unex.cheapgamesv2.MainActivityButtons;
 import es.unex.cheapgamesv2.MenuInicialActivity;
 import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.Usuario;
@@ -53,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                                 });
                             }else{
 
-                                Intent intent = new Intent(LoginActivity.this, MenuInicialActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, MainActivityButtons.class);
                                 UsuarioGlobal userG = new UsuarioGlobal(usuario.getID(), usuario.getNomUsuario(),usuario.getEmail(),usuario.getPassword());
                                 startActivity(intent);
                             }

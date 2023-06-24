@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import es.unex.cheapgamesv2.AppExecutors;
+import es.unex.cheapgamesv2.MainActivityButtons;
 import es.unex.cheapgamesv2.MenuInicialActivity;
 import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.Usuario;
@@ -44,7 +45,7 @@ public class AjustesFragment extends Fragment {
         final EditText cambiarEmail = binding.cambiarEmail;
         final EditText cambiarPassword = binding.cambiarPassword;
 
-        MenuInicialActivity activity = (MenuInicialActivity) getActivity();
+        MainActivityButtons activity = (MainActivityButtons) getActivity();
 
         Log.v("fragment ajustes", UsuarioGlobal.getNomUsuario());
 
