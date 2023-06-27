@@ -26,7 +26,7 @@
         android:id="@+id/cambiarNomUsuario"
         android:layout_width="329dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="44dp"
         android:autofillHints="Nombre usuario"
         android:background="@drawable/edit_text_style"
         android:hint="Nombre de usuario"
@@ -37,14 +37,13 @@
         android:textColorHint="#757575"
         app:layout_constraintBottom_toTopOf="@+id/cambiarEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/cambiarEmail"
         android:layout_width="329dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="48dp"
         android:autofillHints="Email"
         android:background="@drawable/edit_text_style"
         android:hint="Email"
@@ -55,17 +54,18 @@
         android:textColorHint="#757575"
         app:layout_constraintBottom_toTopOf="@+id/cambiarPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/cambiarPassword"
         android:layout_width="329dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="24dp"
         android:autofillHints="Contraseña"
         android:background="@drawable/edit_text_style"
-        android:hint="Contraseña"
 
+        android:hint="Contraseña"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:selectAllOnFocus="true"
@@ -78,22 +78,37 @@
         android:id="@+id/b_aplicarCambios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
         android:text="Aplicar cambios"
-        app:layout_constraintBottom_toTopOf="@+id/b_BorrarCuenta"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.63" />
+
+    <Button
+        android:id="@+id/b_csesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cerrar sesión"
+        android:backgroundTint="@color/purple_500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.735" />
 
     <Button
         android:id="@+id/b_BorrarCuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="96dp"
-
+        android:backgroundTint="@color/red"
         android:text="Borrar cuenta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.843" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

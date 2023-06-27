@@ -72,7 +72,7 @@ public class TracingFragment extends Fragment {
                 Log.v("Seguimiento", "Entrado en juegos en seguimiento");
                 CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance(getActivity().getApplicationContext());
                 ListaSeguimientoDao listaSeguimientoDao = cheapGamesDB.listaSeguimientoDao();
-                seguimientos = listaSeguimientoDao.obtenerSeguimientos(UsuarioGlobal.getID().toString());
+                seguimientos = listaSeguimientoDao.obtenerSeguimientos(UsuarioGlobal.getInstance().getID().toString());
                 Log.v("Seguimiento", "Juegos en seguimiento obtenidos");
                 Log.v("Seguimiento", String.valueOf(seguimientos.size()));
 

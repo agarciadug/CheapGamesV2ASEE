@@ -33,13 +33,13 @@ public class PantallaInicial extends AppCompatActivity {
             }
         });
 
-        Button buttonInvitado = (Button)findViewById(R.id.button_Invitado);
+        /*Button buttonInvitado = (Button)findViewById(R.id.button_Invitado);
         buttonInvitado.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(PantallaInicial.this, MenuInicialActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
 

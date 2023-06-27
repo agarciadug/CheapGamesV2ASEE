@@ -34,7 +34,8 @@ import es.unex.cheapgamesv2.data.room.CheapGamesDB;
 import es.unex.cheapgamesv2.data.room.ListaSeguimientoDao;
 import es.unex.cheapgamesv2.ui.tracing.TracingAdapter;
 
-public class DetailVideogameActivity extends AppCompatActivity {
+public class
+DetailVideogameActivity extends AppCompatActivity {
 
     private DealVideogameAdapter mAdapter;
     private TracingAdapter tracingAdapter;
@@ -78,15 +79,15 @@ public class DetailVideogameActivity extends AppCompatActivity {
 
         //hacer funcionalidad boton seguimiento
         b_Seguimiento=findViewById(R.id.b_seguimiento);
-        if(UsuarioGlobal.getID()>0){
+        if(UsuarioGlobal.getInstance().getID()>0){
             Videogame videojuego = getIntent().getParcelableExtra("videojuego",Videogame.class);
             ListaSeguimientoDao listaSeguimientoDao = cheapGamesDB.listaSeguimientoDao();
             listaSeguido = new ArrayList<>();
             AppExecutors.getInstance().diskIO().execute(new Runnable() {
                 @Override
                 public void run() {
-                    Log.v("Datos", videojuego.getGameID() + ", " + UsuarioGlobal.getID());
-                    listaSeguido = listaSeguimientoDao.obtenerSeguido(videojuego.getGameID(),String.valueOf(UsuarioGlobal.getID()));
+                    Log.v("Datos", videojuego.getGameID() + ", " + UsuarioGlobal.getInstance().getID());
+                    listaSeguido = listaSeguimientoDao.obtenerSeguido(videojuego.getGameID(),String.valueOf(UsuarioGlobal.getInstance().getID()));
                     Log.v("Tamaño lista", String.valueOf(listaSeguido.size()));
                     if(listaSeguido.size()!=1){
                         b_Seguimiento.setText("AÑADIR A SEGUIMIENTO");
@@ -94,8 +95,8 @@ public class DetailVideogameActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
                                 AppExecutors.getInstance().diskIO().execute(() -> {
-                                    Log.v("id del usuario", String.valueOf(UsuarioGlobal.getID()));
-                                    ListaSeguimiento seguimiento = new ListaSeguimiento(videojuego.getGameID(),videojuego.getExternal(), String.valueOf(UsuarioGlobal.getID()));
+                                    Log.v("id del usuario", String.valueOf(UsuarioGlobal.getInstance().getID()));
+                                    ListaSeguimiento seguimiento = new ListaSeguimiento(videojuego.getGameID(),videojuego.getExternal(), String.valueOf(UsuarioGlobal.getInstance().getID()));
                                     listaSeguimientoDao.insertarSeguimiento(seguimiento);
                                     Intent intent = new Intent(DetailVideogameActivity.this, MenuInicialActivity.class);
                                     startActivity(intent);
@@ -109,8 +110,8 @@ public class DetailVideogameActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
                                 AppExecutors.getInstance().diskIO().execute(() -> {
-                                    Log.v("id del usuario", String.valueOf(UsuarioGlobal.getID()));
-                                    listaSeguimientoDao.borrarSeguimiento(videojuego.getGameID(), String.valueOf(UsuarioGlobal.getID()));
+                                    Log.v("id del usuario", String.valueOf(UsuarioGlobal.getInstance().getID()));
+                                    listaSeguimientoDao.borrarSeguimiento(videojuego.getGameID(), String.valueOf(UsuarioGlobal.getInstance().getID()));
                                     Intent intent = new Intent(DetailVideogameActivity.this, MenuInicialActivity.class);
                                     startActivity(intent);
                                 });

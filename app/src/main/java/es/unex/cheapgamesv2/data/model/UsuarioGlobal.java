@@ -1,60 +1,63 @@
 package es.unex.cheapgamesv2.data.model;
 
 public class UsuarioGlobal {
+    private Long ID;
+    private String nomUsuario;
+    private String email;
+    private String password;
 
+    private static UsuarioGlobal instance;
 
-    public static Long ID = Long.valueOf(0);
-    public static String nomUsuario = "Invitado";
-    public static String email="invitado@gmail.com";
-    public static String password="";
-
-    public UsuarioGlobal(Long ID, String nomUsuario, String email, String password){
+    private UsuarioGlobal(Long ID, String nomUsuario, String email, String password) {
         this.ID = ID;
         this.nomUsuario = nomUsuario;
         this.email = email;
         this.password = password;
     }
 
-    public static void resetearUsuario(){
-        UsuarioGlobal.ID = Long.valueOf(0);
-        UsuarioGlobal.nomUsuario = "Invitado";
-        UsuarioGlobal.email = "invitado@gmail.com";
-        UsuarioGlobal.password = "";
+    public static UsuarioGlobal getInstance() {
+        if (instance == null) {
+            instance = new UsuarioGlobal(Long.valueOf(0), "Invitado", "invitado@gmail.com", "");
+        }
+        return instance;
     }
 
-    public static Long getID() {
+    public static void resetearUsuario() {
+        instance.ID = Long.valueOf(0);
+        instance.nomUsuario = "Invitado";
+        instance.email = "invitado@gmail.com";
+        instance.password = "";
+    }
+
+    public Long getID() {
         return ID;
     }
 
-    public static void setID(Long ID) {
-        UsuarioGlobal.ID = ID;
+    public void setID(Long ID) {
+        this.ID = ID;
     }
 
-    public static String getNomUsuario() {
+    public String getNomUsuario() {
         return nomUsuario;
     }
 
-    public static void setNomUsuario(String nomUsuario) {
-        UsuarioGlobal.nomUsuario = nomUsuario;
+    public void setNomUsuario(String nomUsuario) {
+        this.nomUsuario = nomUsuario;
     }
 
-    public static String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public static void setEmail(String email) {
-        UsuarioGlobal.email = email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public static String getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public static void setPassword(String password) {
-        UsuarioGlobal.password = password;
+    public void setPassword(String password) {
+        this.password = password;
     }
-
-
-
-
 }

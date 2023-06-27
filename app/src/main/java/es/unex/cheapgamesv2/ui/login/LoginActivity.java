@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import es.unex.cheapgamesv2.MainActivityButtons;
-import es.unex.cheapgamesv2.MenuInicialActivity;
 import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.Usuario;
 import es.unex.cheapgamesv2.data.model.UsuarioGlobal;
@@ -21,7 +20,6 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText email, password;
     Button login;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,26 +34,29 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String emailText = email.getText().toString();
                 String passwordText = password.getText().toString();
-                if(emailText.isEmpty() || passwordText.isEmpty()){
+                if (emailText.isEmpty() || passwordText.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Rellena todos los campos", Toast.LENGTH_SHORT).show();
-                }else{
-                    CheapGamesDB cheapGamesDB = CheapGamesDB.getInstance(getApplicationContext());
-                    final UsuarioDao usuarioDao = cheapGamesDB.usuarioDao();
+                } else {
+                    final UsuarioDao usuarioDao = CheapGamesDB.getInstance(getApplicationContext()).usuarioDao();
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             Usuario usuario = usuarioDao.login(emailText, passwordText);
-                            if(usuario == null){
+                            if (usuario == null) {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
                                         Toast.makeText(getApplicationContext(), "¡¡Credenciales inválidas!!", Toast.LENGTH_SHORT).show();
                                     }
                                 });
-                            }else{
+                            } else {
+                                UsuarioGlobal usuarioGlobal = UsuarioGlobal.getInstance();
+                                usuarioGlobal.setID(usuario.getID());
+                                usuarioGlobal.setNomUsuario(usuario.getNomUsuario());
+                                usuarioGlobal.setEmail(usuario.getEmail());
+                                usuarioGlobal.setPassword(usuario.getPassword());
 
                                 Intent intent = new Intent(LoginActivity.this, MainActivityButtons.class);
-                                UsuarioGlobal userG = new UsuarioGlobal(usuario.getID(), usuario.getNomUsuario(),usuario.getEmail(),usuario.getPassword());
                                 startActivity(intent);
                             }
                         }

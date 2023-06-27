@@ -64,11 +64,11 @@ public class MenuInicialActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         Button b_sesion = headerView.findViewById(R.id.b_sesion);
 
-        if(!UsuarioGlobal.getNomUsuario().equals("Invitado")){
+        if(!UsuarioGlobal.getInstance().getNomUsuario().equals("Invitado")){
             TextView navUsername = (TextView) headerView.findViewById(R.id.nav_NomUsuario);
-            navUsername.setText(UsuarioGlobal.getNomUsuario());
+            navUsername.setText(UsuarioGlobal.getInstance().getNomUsuario());
             TextView email = headerView.findViewById(R.id.textView);
-            email.setText(UsuarioGlobal.getEmail());
+            email.setText(UsuarioGlobal.getInstance().getEmail());
             Log.v("Nom usuario", "hola");
         }
         else{
