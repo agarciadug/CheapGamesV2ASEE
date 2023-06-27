@@ -7,6 +7,9 @@
         android:icon="@drawable/ic_seguimiento"
         android:title="Seguimiento"/>
     <item android:id="@+id/ajustesFragment"
+        android:icon="@drawable/ic_baseline_manage_accounts_24"
+        android:title="Usuario"/>
+    <item android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_baseline_settings"
         android:title="Ajustes"/>
 </menu>

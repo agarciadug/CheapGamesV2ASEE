@@ -1,0 +1,10 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF">
+
+    <SwitchPreference
+        android:key="theme"
+        android:title="Modo oscuro"
+        app:defaultValue="false" />
+
+</PreferenceScreen>
