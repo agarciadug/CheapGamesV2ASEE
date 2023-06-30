@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +17,6 @@ import android.widget.Toast;
 
 import es.unex.cheapgamesv2.AppExecutors;
 import es.unex.cheapgamesv2.MainActivityButtons;
-import es.unex.cheapgamesv2.MenuInicialActivity;
-import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.Usuario;
 import es.unex.cheapgamesv2.data.model.UsuarioGlobal;
 import es.unex.cheapgamesv2.data.room.CheapGamesDB;

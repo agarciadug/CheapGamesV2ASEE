@@ -15,6 +15,6 @@ public class SearchVideogameViewModelFactory extends ViewModelProvider.NewInstan
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
 
-        return (T) new SearchVideogameActivityViewModel(mRepository);
+        return (T) new SearchVideogameFragmentViewModel(mRepository);
     }
 }

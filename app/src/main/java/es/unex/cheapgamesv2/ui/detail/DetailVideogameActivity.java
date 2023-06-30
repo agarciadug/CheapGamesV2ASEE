@@ -1,5 +1,6 @@
 package es.unex.cheapgamesv2.ui.detail;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -9,11 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -23,7 +24,7 @@ import java.util.List;
 import es.unex.cheapgamesv2.AppContainer;
 import es.unex.cheapgamesv2.AppExecutors;
 import es.unex.cheapgamesv2.InjectorUtils;
-import es.unex.cheapgamesv2.MenuInicialActivity;
+import es.unex.cheapgamesv2.MainActivityButtons;
 import es.unex.cheapgamesv2.MyApplication;
 import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.ListaSeguimiento;
@@ -98,7 +99,7 @@ DetailVideogameActivity extends AppCompatActivity {
                                     Log.v("id del usuario", String.valueOf(UsuarioGlobal.getInstance().getID()));
                                     ListaSeguimiento seguimiento = new ListaSeguimiento(videojuego.getGameID(),videojuego.getExternal(), String.valueOf(UsuarioGlobal.getInstance().getID()));
                                     listaSeguimientoDao.insertarSeguimiento(seguimiento);
-                                    Intent intent = new Intent(DetailVideogameActivity.this, MenuInicialActivity.class);
+                                    Intent intent = new Intent(DetailVideogameActivity.this, MainActivityButtons.class);
                                     startActivity(intent);
                                 });
                             }
@@ -112,7 +113,7 @@ DetailVideogameActivity extends AppCompatActivity {
                                 AppExecutors.getInstance().diskIO().execute(() -> {
                                     Log.v("id del usuario", String.valueOf(UsuarioGlobal.getInstance().getID()));
                                     listaSeguimientoDao.borrarSeguimiento(videojuego.getGameID(), String.valueOf(UsuarioGlobal.getInstance().getID()));
-                                    Intent intent = new Intent(DetailVideogameActivity.this, MenuInicialActivity.class);
+                                    Intent intent = new Intent(DetailVideogameActivity.this, MainActivityButtons.class);
                                     startActivity(intent);
                                 });
                             }
@@ -137,6 +138,16 @@ DetailVideogameActivity extends AppCompatActivity {
             return null;
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private void showDealsDataView(){
         mRecyclerView.setVisibility(View.VISIBLE);

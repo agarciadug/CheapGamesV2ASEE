@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import es.unex.cheapgamesv2.MenuInicialActivity;
 import es.unex.cheapgamesv2.R;
 
 public class PantallaInicial extends AppCompatActivity {
@@ -32,14 +31,6 @@ public class PantallaInicial extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        /*Button buttonInvitado = (Button)findViewById(R.id.button_Invitado);
-        buttonInvitado.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(PantallaInicial.this, MenuInicialActivity.class);
-                startActivity(intent);
-            }
-        });*/
     }
 
 

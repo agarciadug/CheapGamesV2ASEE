@@ -36,7 +36,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Nombre videojuego"
-                    android:textColor="#000000"
                     android:textSize="24sp"></TextView>
 
                 <LinearLayout
@@ -52,7 +51,6 @@
                         android:layout_weight="90"
                         android:gravity="center"
                         android:text="Precio"
-                        android:textColor="#000000"
                         android:textSize="18sp"></TextView>
                 </LinearLayout>
             </LinearLayout>

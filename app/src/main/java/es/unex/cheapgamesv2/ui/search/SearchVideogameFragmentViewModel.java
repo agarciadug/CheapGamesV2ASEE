@@ -8,13 +8,13 @@ import java.util.List;
 import es.unex.cheapgamesv2.data.VideogameRepository;
 import es.unex.cheapgamesv2.data.model.Videogame;
 
-public class SearchVideogameActivityViewModel extends ViewModel {
+public class SearchVideogameFragmentViewModel extends ViewModel {
 
     private final VideogameRepository mRepository;
     private final LiveData<List<Videogame>> mVideogames;
     private String mTitle = "";
 
-    public SearchVideogameActivityViewModel(VideogameRepository repository) {
+    public SearchVideogameFragmentViewModel(VideogameRepository repository) {
         mRepository = repository;
         mVideogames = mRepository.getCurrentVideogames();
     }

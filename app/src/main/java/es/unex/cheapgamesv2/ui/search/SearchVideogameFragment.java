@@ -55,7 +55,7 @@ public class SearchVideogameFragment extends Fragment {
 
         SearchVideogameViewModelFactory factory = InjectorUtils.provideMainActivityViewModelFactory(requireContext().getApplicationContext());
         AppContainer appContainer = ((MyApplication) requireActivity().getApplication()).appContainer;
-        SearchVideogameActivityViewModel mViewModel = new ViewModelProvider(this, (ViewModelProvider.Factory) appContainer.factory).get(SearchVideogameActivityViewModel.class);
+        SearchVideogameFragmentViewModel mViewModel = new ViewModelProvider(this, (ViewModelProvider.Factory) appContainer.factory).get(SearchVideogameFragmentViewModel.class);
         mViewModel.getVideogames().observe(getViewLifecycleOwner(), videogames -> {
             mAdapter.swap(videogames);
             // Mostrar la lista de repositorios o la pantalla de carga según si los datos de repositorios existen y están cargados
