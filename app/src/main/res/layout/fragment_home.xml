@@ -8,12 +8,23 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista_busqueda"
-        android:layout_width="392dp"
-        android:layout_height="651dp"
+        android:layout_width="410dp"
+        android:layout_height="563dp"
         android:layout_marginEnd="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.774" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="304dp"
+        android:layout_height="205dp"
+        android:src="@drawable/ofertas"
+        app:layout_constraintBottom_toTopOf="@+id/lista_busqueda"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.546"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
