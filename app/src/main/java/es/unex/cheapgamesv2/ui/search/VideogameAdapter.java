@@ -2,6 +2,7 @@ package es.unex.cheapgamesv2.ui.search;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.unex.cheapgamesv2.R;
 import es.unex.cheapgamesv2.data.model.Usuario;
 import es.unex.cheapgamesv2.data.model.Videogame;
+import es.unex.cheapgamesv2.data.model.VideogameDeal;
 import es.unex.cheapgamesv2.ui.detail.DetailVideogameActivity;
+import es.unex.cheapgamesv2.ui.home.HomeFragment;
 
 public class VideogameAdapter extends RecyclerView.Adapter<VideogameAdapter.MyViewHolder> {
     private final Context mContex;
@@ -27,6 +31,7 @@ public class VideogameAdapter extends RecyclerView.Adapter<VideogameAdapter.MyVi
         mContex = context;
         mVideojuegosLista = items;
     }
+
 
     @Override
     public VideogameAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

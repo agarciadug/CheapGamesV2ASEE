@@ -13,6 +13,9 @@ import com.google.gson.annotations.SerializedName;
 @Entity(tableName = "videogameDeal", indices = {@Index(value = {"dealID"}, unique = true)})
 public class VideogameDeal {
 
+    @SerializedName("title")
+    @Expose
+    private String title;
     @SerializedName("gameID")
     @Expose
     private String gameID;
@@ -33,6 +36,9 @@ public class VideogameDeal {
     @SerializedName("savings")
     @Expose
     private String savings;
+    @SerializedName("thumb")
+    @Expose
+    private String thumb;
 
     public final static Parcelable.Creator<VideogameDeal> CREATOR = new Parcelable.Creator<VideogameDeal>() {
 
@@ -47,15 +53,25 @@ public class VideogameDeal {
     };
 
     public VideogameDeal(android.os.Parcel in) {
+        this.title = ((String) in.readValue((String.class.getClassLoader())));
         this.gameID = ((String) in.readValue((String.class.getClassLoader())));
         this.storeID = ((String) in.readValue((String.class.getClassLoader())));
         this.dealID = ((String) in.readValue((String.class.getClassLoader())));
         this.price = ((String) in.readValue((String.class.getClassLoader())));
         this.retailPrice = ((String) in.readValue((String.class.getClassLoader())));
         this.savings = ((String) in.readValue((String.class.getClassLoader())));
+        this.thumb = ((String) in.readValue((String.class.getClassLoader())));
     }
 
     public VideogameDeal() {
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getGameID() {
@@ -82,9 +98,7 @@ public class VideogameDeal {
         this.dealID = dealID;
     }
 
-    public String getPrice() {
-        return price;
-    }
+    public String getPrice() { return price; }
 
     public void setPrice(String price) {
         this.price = price;
@@ -105,5 +119,10 @@ public class VideogameDeal {
     public void setSavings(String savings) {
         this.savings = savings;
     }
+
+
+    public String getThumb() { return thumb; }
+
+    public void setThumb(String thumb) { this.thumb = thumb; }
 
 }

@@ -52,6 +52,7 @@ public class DealVideogameAdapter extends RecyclerView.Adapter<DealVideogameAdap
         Glide.with(mContex).load("https://www.cheapshark.com/img/stores/icons/"+idLogo+".png").into(holder.mLogoTienda);
         holder.mItem = mVideogameDeals.get(position);
         holder.mPrecioBView.setText(mVideogameDeals.get(position).getPrice()+"€");
+        Log.v("Precio oferta",mVideogameDeals.get(position).getPrice()+"€");
         holder.mPrecioOView.setText(mVideogameDeals.get(position).getRetailPrice()+"€");
         String[] parts = mVideogameDeals.get(position).getSavings().split("[.]");
         Log.v("parts", parts[0]);

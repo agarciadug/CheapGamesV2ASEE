@@ -22,7 +22,7 @@ import es.unex.cheapgamesv2.AppContainer;
 import es.unex.cheapgamesv2.InjectorUtils;
 import es.unex.cheapgamesv2.MyApplication;
 import es.unex.cheapgamesv2.R;
-import es.unex.cheapgamesv2.databinding.ActivitySearchVideogameBinding;
+import es.unex.cheapgamesv2.databinding.FragmentSearchVideogameBinding;
 
 public class SearchVideogameFragment extends Fragment {
 
@@ -30,12 +30,12 @@ public class SearchVideogameFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private SearchView mSearchView;
 
-    private ActivitySearchVideogameBinding binding;
+    private FragmentSearchVideogameBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = ActivitySearchVideogameBinding.inflate(inflater, container, false);
+        binding = FragmentSearchVideogameBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 

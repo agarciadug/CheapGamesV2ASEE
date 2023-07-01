@@ -1,13 +1,18 @@
-
 package es.unex.cheapgamesv2.data.model;
 
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Deal implements Parcelable
-{
+@Entity(tableName = "videogameBest", indices = {@Index(value = {"gameID"}, unique = true)})
+public class VideogameBest {
+
     @SerializedName("title")
     @Expose
     private String title;
@@ -17,6 +22,8 @@ public class Deal implements Parcelable
     @SerializedName("storeID")
     @Expose
     private String storeID;
+    @PrimaryKey
+    @NonNull
     @SerializedName("dealID")
     @Expose
     private String dealID;
@@ -35,35 +42,32 @@ public class Deal implements Parcelable
     @SerializedName("thumb")
     @Expose
     private String thumb;
-    public final static Creator<Deal> CREATOR = new Creator<Deal>() {
 
+    public final static Parcelable.Creator<VideogameBest> CREATOR = new Parcelable.Creator<VideogameBest>() {
 
-        @SuppressWarnings({
-            "unchecked"
-        })
-        public Deal createFromParcel(android.os.Parcel in) {
-            return new Deal(in);
+        public VideogameBest createFromParcel(android.os.Parcel in) {
+            return new VideogameBest(in);
         }
 
-        public Deal[] newArray(int size) {
-            return (new Deal[size]);
+        public VideogameBest[] newArray(int size) {
+            return (new VideogameBest[size]);
         }
 
-    }
-    ;
+    };
 
-    protected Deal(android.os.Parcel in) {
+    public VideogameBest(android.os.Parcel in) {
         this.title = ((String) in.readValue((String.class.getClassLoader())));
         this.gameID = ((String) in.readValue((String.class.getClassLoader())));
         this.storeID = ((String) in.readValue((String.class.getClassLoader())));
         this.dealID = ((String) in.readValue((String.class.getClassLoader())));
         this.price = ((String) in.readValue((String.class.getClassLoader())));
+        this.salePrice = ((String) in.readValue((String.class.getClassLoader())));
         this.retailPrice = ((String) in.readValue((String.class.getClassLoader())));
         this.savings = ((String) in.readValue((String.class.getClassLoader())));
         this.thumb = ((String) in.readValue((String.class.getClassLoader())));
     }
 
-    public Deal() {
+    public VideogameBest() {
     }
 
     public String getTitle() {
@@ -74,11 +78,13 @@ public class Deal implements Parcelable
         this.title = title;
     }
 
-    public String getGameID() {return gameID;}
+    public String getGameID() {
+        return gameID;
+    }
 
-    public void setGameID(String gameID) { this.gameID = gameID;}
-
-
+    public void setGameID(String gameID) {
+        this.gameID = gameID;
+    }
 
     public String getStoreID() {
         return storeID;
@@ -96,18 +102,17 @@ public class Deal implements Parcelable
         this.dealID = dealID;
     }
 
-    public String getPrice() {
-        return price;
-    }
+    public String getPrice() { return price; }
 
-    public void setPrice(String price) {
+    public void setPrice(String salePrice) {
         this.price = price;
     }
 
     public String getSalePrice() { return salePrice; }
 
-    public void setSalePrice(String salePrice) { this.salePrice = salePrice; }
-
+    public void setSalePrice(String salePrice) {
+        this.salePrice = salePrice;
+    }
 
     public String getRetailPrice() {
         return retailPrice;
@@ -125,23 +130,9 @@ public class Deal implements Parcelable
         this.savings = savings;
     }
 
+
     public String getThumb() { return thumb; }
 
     public void setThumb(String thumb) { this.thumb = thumb; }
-
-    public void writeToParcel(android.os.Parcel dest, int flags) {
-        dest.writeValue(storeID);
-        dest.writeValue(gameID);
-        dest.writeValue(dealID);
-        dest.writeValue(price);
-        dest.writeValue(salePrice);
-        dest.writeValue(retailPrice);
-        dest.writeValue(savings);
-        dest.writeValue(thumb);
-    }
-
-    public int describeContents() {
-        return  0;
-    }
 
 }

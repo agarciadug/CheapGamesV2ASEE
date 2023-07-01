@@ -37,11 +37,12 @@ public class VideogameDetailNetworkLoaderRunnable implements Runnable{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.v("Juego recupera", dVR.getInfo().getTitle());
+        Log.v("Juego recupera", dVR.getInfo().getTitle() +" Precio:"+ dVR.getDeals().get(0).getPrice());
         ArrayList<VideogameDeal> videogameDealArrayList = new ArrayList<>();
         VideogameDeal vdAux;
         for(int i=0; i<dVR.getDeals().size();i++){
             vdAux = new VideogameDeal();
+            vdAux.setTitle(dVR.getInfo().getTitle());
             vdAux.setGameID(mID);
             vdAux.setDealID(dVR.getDeals().get(i).getDealID());
             vdAux.setPrice(dVR.getDeals().get(i).getPrice());

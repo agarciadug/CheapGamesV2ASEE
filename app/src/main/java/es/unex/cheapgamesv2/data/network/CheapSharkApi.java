@@ -7,6 +7,7 @@ import es.unex.cheapgamesv2.data.model.Deal;
 import es.unex.cheapgamesv2.data.model.DetalleVideojuegoRespuesta;
 import es.unex.cheapgamesv2.data.model.Store;
 import es.unex.cheapgamesv2.data.model.Videogame;
+import es.unex.cheapgamesv2.data.model.VideogameBest;
 import es.unex.cheapgamesv2.data.model.VideogameDeal;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -26,6 +27,6 @@ public interface CheapSharkApi {
     @GET("stores")
     Call<ArrayList<Store>> getAllStores();
 
-    @GET("deals?metacritic=90&sortBy=metacriticScore:asc&pageSize=5&storeID=1")
-    Call<List<VideogameDeal>> getBestDeals();
+    @GET("deals?metacritic=90&sortBy=metacriticScore:asc&pageSize=5&storeID=1&dealRating=10")
+    Call<List<VideogameBest>> getVideogamesBest();
 }

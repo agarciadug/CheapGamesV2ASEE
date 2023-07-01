@@ -130,8 +130,8 @@ DetailVideogameActivity extends AppCompatActivity {
     private Videogame GetDataFromIntent() {
         if(getIntent().hasExtra("videojuego")){
             Videogame videojuego = getIntent().getParcelableExtra("videojuego",Videogame.class);
-            title_videogame.setText(videojuego.getExternal());
-            Glide.with(DetailVideogameActivity.this).load(videojuego.getThumb()).into(img_videogame);
+                title_videogame.setText(videojuego.getExternal());
+                Glide.with(DetailVideogameActivity.this).load(videojuego.getThumb()).into(img_videogame);
             return videojuego;
         }
         else{
